@@ -1,3 +1,6 @@
 <div #cont class="container">
-  <div *ngFor="let i of [].constructor(number)"></div>
+  <div class="node-wrapper" *ngFor="let i of [].constructor(number)">
+    <div class="node"></div>
+  </div>
 </div>
+<button (click)="onClick()">CLICK</button>

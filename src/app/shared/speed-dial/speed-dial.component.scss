@@ -12,13 +12,36 @@ $circle-size: 40px;
   border-radius: 50%;
 }
 
-.container div {
+.node-wrapper {
   width: $circle-size;
   height: $circle-size;
-  background-color: orange;
   position: absolute;
-  border-radius: 50%;
   left: 50%;
   top: 50%;
   margin: -($circle-size/2);
+}
+
+.node {
+  width: $circle-size;
+  height: $circle-size;
+  background-color: orange;
+  border-radius: 50%;
+}
+
+@keyframes scale-down {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes scale-up {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
