@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { SpeedDialComponent } from '../shared/speed-dial/speed-dial.component';
+import { SpeedDialItem } from '../shared/speed-dial/speeddial-item';
 
 @Component({
   selector: 'app-home',
@@ -7,30 +9,52 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
-  items!: MenuItem[];
+  @ViewChild(SpeedDialComponent) speedDial!: SpeedDialComponent;
+  constructor(private router: Router) {}
+  items!: SpeedDialItem[];
+  logoUrl = 'assets/logo.png';
+
   ngOnInit(): void {
     this.items = [
       {
-        icon: 'pi pi-pencil',
-        command: () => {},
+        imgUrl: 'assets/profile-icon.png',
+        func: () => {
+          alert('profile');
+          //this.router.navigate(['']);
+        },
       },
       {
-        icon: 'pi pi-refresh',
-        command: () => {},
+        imgUrl: 'assets/projects-icon.png',
+        func: () => {
+          alert('projects');
+          //this.router.navigate(['']);
+        },
       },
       {
-        icon: 'pi pi-trash',
-        command: () => {},
+        imgUrl: 'assets/skills-icon.png',
+        func: () => {
+          alert('skills');
+          //this.router.navigate(['']);
+        },
       },
       {
-        icon: 'pi pi-upload',
-        routerLink: ['/fileupload'],
+        imgUrl: 'assets/contact-icon.png',
+        func: () => {
+          alert('contact');
+          //this.router.navigate(['']);
+        },
       },
       {
-        icon: 'pi pi-external-link',
-        url: 'http://angular.io',
+        imgUrl: 'assets/blog-icon.png',
+        func: () => {
+          alert('blog');
+          //this.router.navigate(['']);
+        },
       },
     ];
+  }
+
+  speedDialToggle() {
+    this.speedDial.toggle();
   }
 }

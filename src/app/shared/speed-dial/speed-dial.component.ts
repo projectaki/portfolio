@@ -1,6 +1,15 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { skip, takeUntil, tap } from 'rxjs/operators';
+import { SpeedDialItem } from './speeddial-item';
 
 @Component({
   selector: 'speed-dial',
@@ -8,15 +17,24 @@ import { takeUntil, tap } from 'rxjs/operators';
   styleUrls: ['./speed-dial.component.scss'],
 })
 export class SpeedDialComponent {
-  @ViewChild('cont') cont!: ElementRef;
-  number = 6;
-  angle = 360 / this.number;
+  @Input() items: SpeedDialItem[] = [];
+  /**Default: false */
+  @Input() opened: boolean = false;
+  @Input() logoUrl: string = '';
 
-  private readonly _click = new BehaviorSubject<boolean>(false);
-  click$ = this._click.asObservable();
+  @ViewChild('cont') cont!: ElementRef;
+
+  private angle: number = 360;
+
+  private readonly _click = new BehaviorSubject<boolean>(this.opened);
+  private click$ = this._click.asObservable().pipe(skip(1));
   private unsub$ = new Subject();
 
   constructor() {}
+
+  ngOnInit() {
+    this.angle /= this.items.length;
+  }
 
   ngOnDestroy() {
     this.unsub$.next();
@@ -24,14 +42,7 @@ export class SpeedDialComponent {
   }
 
   ngAfterViewInit(): void {
-    //this.cont.nativeElement.children[0].style.transform = `rotate(${270}deg) translate(${150}px)`;
-    let startAngle = 270;
-    for (let i of this.cont.nativeElement.children) {
-      const node = i.children[0];
-      i.style.transform = `rotate(${startAngle}deg) translate(${150}px) rotate(-${startAngle}deg)`;
-      node.style.transform = `scale(0)`;
-      startAngle += this.angle;
-    }
+    this.initItemPositions();
     this.click$
       .pipe(
         tap((val) => {
@@ -43,8 +54,18 @@ export class SpeedDialComponent {
       .subscribe();
   }
 
-  onClick() {
+  public toggle() {
     this._click.next(!this._click.value);
+  }
+
+  private initItemPositions() {
+    let startAngle = 270;
+    for (let i of this.cont.nativeElement.children) {
+      const node = i.children[0];
+      i.style.transform = `rotate(${startAngle}deg) translate(${150}px) rotate(-${startAngle}deg)`;
+      node.style.transform = `scale(${this.opened ? 1 : 0})`;
+      startAngle += this.angle;
+    }
   }
 
   private appear() {
