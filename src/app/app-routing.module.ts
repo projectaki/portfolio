@@ -7,7 +7,20 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    children: [{ path: 'home', component: HomeComponent }],
+
+    children: [
+      { path: 'home', component: HomeComponent },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./profile/profile.module').then((m) => m.ProfileModule),
+      },
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 

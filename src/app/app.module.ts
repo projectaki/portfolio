@@ -17,7 +17,6 @@ import { LayoutModule } from './layout/layout.module';
     NoopAnimationsModule,
     SharedModule,
     HomeModule,
-    ProfileModule,
     LayoutModule,
   ],
   providers: [],
