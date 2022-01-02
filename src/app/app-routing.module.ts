@@ -16,6 +16,11 @@ const routes: Routes = [
           import('./profile/profile.module').then((m) => m.ProfileModule),
       },
       {
+        path: 'skills',
+        loadChildren: () =>
+          import('./skills/skills.module').then((m) => m.SkillsModule),
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',
