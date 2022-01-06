@@ -21,6 +21,21 @@ const routes: Routes = [
           import('./skills/skills.module').then((m) => m.SkillsModule),
       },
       {
+        path: 'blog',
+        loadChildren: () =>
+          import('./blog/blog.module').then((m) => m.BlogModule),
+      },
+      {
+        path: 'contacts',
+        loadChildren: () =>
+          import('./contacts/contacts.module').then((m) => m.ContactsModule),
+      },
+      {
+        path: 'projects',
+        loadChildren: () =>
+          import('./projects/projects.module').then((m) => m.ProjectsModule),
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',
