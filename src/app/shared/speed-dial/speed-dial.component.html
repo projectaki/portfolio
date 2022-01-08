@@ -1,3 +1,8 @@
 <div #cont class="container">
-  <div *ngFor="let i of [].constructor(number)"></div>
+  <div class="node-wrapper" *ngFor="let item of items">
+    <div class="node" (click)="item.func()">
+      <img class="link-image" src="{{ item.imgUrl }}" alt="" />
+    </div>
+  </div>
 </div>
+<a (click)="toggle()"><img class="logo" src="{{ logoUrl }}" alt="logo" /></a>

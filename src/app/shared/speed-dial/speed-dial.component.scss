@@ -8,17 +8,63 @@ $circle-size: 40px;
   width: $radius;
   height: $radius;
   transform: translate(-50%, -50%);
-  border: 1px solid gray;
+  //border: 1px solid gray;
   border-radius: 50%;
 }
 
-.container div {
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8rem;
+  cursor: pointer;
+}
+
+.logo:hover {
+  opacity: 0.7;
+}
+
+.link-image {
+  width: 3rem;
+  cursor: pointer;
+}
+
+.link-image:hover {
+  transform: scale(1.1);
+}
+
+.node-wrapper {
   width: $circle-size;
   height: $circle-size;
-  background-color: orange;
   position: absolute;
-  border-radius: 50%;
   left: 50%;
   top: 50%;
   margin: -($circle-size/2);
+}
+
+.node {
+  // width: $circle-size;
+  // height: $circle-size;
+  // background-color: orange;
+  // border-radius: 50%;
+  // cursor: pointer;
+}
+
+@keyframes scale-down {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes scale-up {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
