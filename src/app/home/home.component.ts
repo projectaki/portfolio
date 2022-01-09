@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { SpeedDialComponent } from '../shared/speed-dial/speed-dial.component';
 import { SpeedDialItem } from '../shared/speed-dial/speeddial-item';
 
@@ -10,7 +9,6 @@ import { SpeedDialItem } from '../shared/speed-dial/speeddial-item';
 })
 export class HomeComponent implements OnInit {
   @ViewChild(SpeedDialComponent) speedDial!: SpeedDialComponent;
-  constructor(private router: Router) {}
   items!: SpeedDialItem[];
   logoUrl = 'assets/logo.png';
 

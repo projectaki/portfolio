@@ -1,22 +1,14 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { skip, takeUntil, tap } from 'rxjs/operators';
 import { SpeedDialItem } from './speeddial-item';
 
 @Component({
-  selector: 'speed-dial',
+  selector: 'app-speed-dial',
   templateUrl: './speed-dial.component.html',
   styleUrls: ['./speed-dial.component.scss'],
 })
-export class SpeedDialComponent {
+export class SpeedDialComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() items: SpeedDialItem[] = [];
   /**Default: false */
   @Input() opened: boolean = false;
@@ -45,7 +37,7 @@ export class SpeedDialComponent {
     this.initItemPositions();
     this.click$
       .pipe(
-        tap((val) => {
+        tap(val => {
           if (val) this.appear();
           else this.disappear();
         }),

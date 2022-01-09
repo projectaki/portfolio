@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
-  template: ` <star-background></star-background>
-    <router-outlet></router-outlet>`,
+  templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }
