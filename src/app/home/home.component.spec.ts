@@ -1,21 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { SpeedDialItem } from '../shared/speed-dial/speeddial-item';
-
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-})
-export class HomeComponent implements OnInit {
-  items!: SpeedDialItem[];
-  logoUrl = 'assets/logo.png';
-
-  ngOnInit(): void {
-    this.initItems();
-  }
-
-  private initItems() {
-    return (this.items = [
+test('adds 1 + 2 to equal 3', () => {
+  expect(
+    [
       {
         imgUrl: 'assets/profile-icon.png',
         func: () => {
@@ -51,6 +36,6 @@ export class HomeComponent implements OnInit {
           //this.router.navigate(['']);
         },
       },
-    ]);
-  }
-}
+    ].length
+  ).toBe(5);
+});
