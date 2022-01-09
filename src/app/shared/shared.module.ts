@@ -9,12 +9,6 @@ import { SpeedDialComponent } from './speed-dial/speed-dial.component';
 @NgModule({
   declarations: [SpeedDialComponent],
   imports: [CommonModule, MatSidenavModule, RouterModule, FlexLayoutModule],
-  exports: [
-    SpeedDialComponent,
-    MatSidenavModule,
-    BrowserModule,
-    RouterModule,
-    FlexLayoutModule,
-  ],
+  exports: [SpeedDialComponent, MatSidenavModule, BrowserModule, RouterModule, FlexLayoutModule],
 })
 export class SharedModule {}

@@ -43,14 +43,6 @@ $circle-size: 40px;
   margin: -($circle-size/2);
 }
 
-.node {
-  // width: $circle-size;
-  // height: $circle-size;
-  // background-color: orange;
-  // border-radius: 50%;
-  // cursor: pointer;
-}
-
 @keyframes scale-down {
   0% {
     transform: scale(1);

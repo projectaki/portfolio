@@ -1,14 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'star-background',
+  selector: 'app-star-background',
   templateUrl: './star-background.component.html',
-  styleUrls: ['./star-background.component.scss']
+  styleUrls: ['./star-background.component.scss'],
 })
-export class StarBackgroundComponent implements OnInit {
+export class StarBackgroundComponent {
   starCount = 20;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }
