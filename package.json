@@ -11,7 +11,7 @@
     "lint": "npx eslint src/**/*.{ts,html} --fix",
     "format-lint": "npm run format && npm run lint",
     "prepare": "husky install",
-    "deploy": "ng deploy --base-href=/portfolio/"
+    "deploy": "ng deploy --base-href=/portfolio/ --no-silent"
   },
   "private": true,
   "dependencies": {
