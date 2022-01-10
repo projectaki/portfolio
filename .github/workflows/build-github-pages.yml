@@ -14,32 +14,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout
+        uses: actions/checkout@v2
 
       - name: setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 14
 
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+      - name: install dependencies
+        run: npm ci
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build
-        run: npm build
-
-      - name: Test
+      - name: test
         run: npm test
 
   build:
@@ -47,13 +33,18 @@ jobs:
     name: Build to github pages
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
+      - name: checkout
         uses: actions/checkout@v2
 
-      - name: npm install
-        run: npm install
+      - name: setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
 
-      - name: Build to github pages
+      - name: install dependencies
+        run: npm ci
+
+      - name: build to github pages
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: npm run deploy
