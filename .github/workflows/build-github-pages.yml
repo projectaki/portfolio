@@ -26,22 +26,17 @@ jobs:
           npm install
           npm test
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: node-modules-artifacts
-          path: node_modules
-
-  build:
-    needs: test
-    name: Build to github pages
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-
-      - uses: actions/download-artifact@v2
-        with:
-          name: node-modules-artifacts
-
       - name: Build to github pages
         run: npm run deploy
+
+  # build:
+  #   needs: test
+  #   name: Build to github pages
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out the repo
+  #       uses: actions/checkout@v2
+
+  #     - uses: actions/download-artifact@v2
+  #       with:
+  #         name: node-modules-artifacts
