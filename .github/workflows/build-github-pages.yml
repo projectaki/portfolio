@@ -1,0 +1,40 @@
+name: Test and build to github pages
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: npm install and test
+        run: |
+          npm install
+          npm test
+
+  build:
+    needs: test
+    name: Build to github pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Build to github pages
+        run: "ng deploy --base-href=/portfolio/"
+      
+
+  
+
