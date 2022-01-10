@@ -10,7 +10,8 @@
     "format": "npx prettier src/**/*.{ts,html,css,scss} --write",
     "lint": "npx eslint src/**/*.{ts,html} --fix",
     "format-lint": "npm run format && npm run lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "ng deploy --base-href=/portfolio/"
   },
   "private": true,
   "dependencies": {
