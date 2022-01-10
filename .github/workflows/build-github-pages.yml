@@ -21,24 +21,36 @@ jobs:
         with:
           node-version: 14
 
-      - name: npm install,build and test
-        run: |
-          npm ci
-          npm test
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm build
+
+      - name: Test
+        run: npm test
+
+  build:
+    needs: test
+    name: Build to github pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
 
       - name: Build to github pages
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: npm run deploy
-
-  # build:
-  #   needs: test
-  #   name: Build to github pages
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check out the repo
-  #       uses: actions/checkout@v2
-
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         name: node-modules-artifacts
