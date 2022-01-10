@@ -11,7 +11,7 @@
     "lint": "npx eslint src/**/*.{ts,html} --fix",
     "format-lint": "npm run format && npm run lint",
     "prepare": "husky install",
-    "deploy": "ng deploy --name='projectaki' --email=akiasus@outlook.com"
+    "deploy": "ng deploy"
   },
   "private": true,
   "dependencies": {

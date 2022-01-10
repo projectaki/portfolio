@@ -93,7 +93,12 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://projectaki.github.io/portfolio/",
+            "name": "projectaki",
+            "email": "akiasus@outlook.com"
+          }
         }
       }
     }

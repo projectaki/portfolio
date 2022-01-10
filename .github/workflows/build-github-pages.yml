@@ -8,8 +8,8 @@ on:
 
   workflow_dispatch:
 
-env:
-  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+# env:
+#   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 jobs:
   test:
@@ -27,7 +27,6 @@ jobs:
       - name: npm install,build and test
         run: |
           npm ci
-          npm run build
           npm test
 
       - name: Build to github pages
