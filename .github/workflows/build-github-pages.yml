@@ -22,12 +22,7 @@ jobs:
       - name: npm install,build and test
         run: |
           npm install
-          npm run build
           npm test
-      - uses: actions/upload-artifact@v2
-        with:
-          name: build-artifacts
-          path: dist/portfolio/
 
   build:
     needs: test
@@ -37,9 +32,8 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - uses: actions/download-artifact@v2
-        with:
-          name: build-artifacts
+      - name: Install angular cli
+        run: npm install -g @angular/cli
 
       - name: Build to github pages
-        run: 'npm run deploy'
+        run: npm run deploy
