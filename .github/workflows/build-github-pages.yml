@@ -8,9 +8,6 @@ on:
 
   workflow_dispatch:
 
-# env:
-#   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
 jobs:
   test:
     name: Run unit tests
@@ -30,6 +27,8 @@ jobs:
           npm test
 
       - name: Build to github pages
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: npm run deploy
 
   # build:
