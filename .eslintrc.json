@@ -2,7 +2,8 @@
   "root": true,
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "ignorePatterns": ["projects/**/*"],
   "overrides": [
@@ -19,7 +20,6 @@
         "plugin:prettier/recommended"
       ],
       "rules": {
-        "no-undef": "warn",
         "@angular-eslint/directive-selector": [
           "error",
           {
