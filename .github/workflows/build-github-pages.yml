@@ -1,4 +1,4 @@
-name: Test and build to github pages
+name: Tests
 
 on:
   # push:
@@ -47,7 +47,7 @@ jobs:
 
   build:
     needs: test
-    name: Build to github pages
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: checkout
