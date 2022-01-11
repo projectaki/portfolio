@@ -1,4 +1,4 @@
-name: Test and build to github pages
+name: Tests
 
 on:
   # push:
@@ -38,11 +38,16 @@ jobs:
         run: npm ci
 
       - name: test
-        run: npm test
+        run: npm test:coverage
+
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@1.1.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
   build:
     needs: test
-    name: Build to github pages
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: checkout
