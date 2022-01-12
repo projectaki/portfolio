@@ -11,8 +11,8 @@ import { SpeedDialItem } from './speeddial-item';
 export class SpeedDialComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() items: SpeedDialItem[] = [];
   /**Default: false */
-  @Input() opened: boolean = false;
-  @Input() logoUrl: string = '';
+  @Input() opened!: boolean;
+  @Input() logoUrl!: string;
 
   @ViewChild('cont') cont!: ElementRef;
 
@@ -35,6 +35,10 @@ export class SpeedDialComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initItemPositions();
+    this.initClickHandler();
+  }
+
+  private initClickHandler() {
     this.click$
       .pipe(
         tap(val => {
@@ -64,7 +68,7 @@ export class SpeedDialComponent implements OnInit, OnDestroy, AfterViewInit {
     let delay = 0.05;
     for (let i of this.cont.nativeElement.children) {
       const node = i.children[0];
-      node.style.animation = `scale-up 0.2s linear ${delay}s forwards`;
+      node.style.animation = `scale-up 0.2s linear ${delay}s both`;
       delay += 0.05;
     }
   }
