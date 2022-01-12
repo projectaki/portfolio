@@ -47,7 +47,8 @@ jobs:
 
   build:
     needs: test
-    name: Build
+    environment: prod
+    name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
       - name: checkout
