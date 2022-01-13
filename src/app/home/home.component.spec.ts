@@ -1,41 +1,52 @@
-test('adds 1 + 2 to equal 3', () => {
-  expect(
-    [
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { HomeComponent } from './home.component';
+
+describe('Test home component', () => {
+  let module;
+  let fixture;
+  let comp: HomeComponent;
+
+  beforeEach(() => {
+    module = TestBed.configureTestingModule({
+      declarations: [HomeComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+    });
+    fixture = module.createComponent(HomeComponent);
+    comp = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  test('Is component initialized', () => {
+    expect(comp).toBeDefined();
+  });
+
+  test('Test input variables', () => {
+    comp.items = [
       {
-        imgUrl: 'assets/profile-icon.png',
-        func: () => {
-          alert('profile');
-          //this.router.navigate(['']);
-        },
+        imgUrl: 'img',
+        func: () => 1,
       },
-      {
-        imgUrl: 'assets/projects-icon.png',
-        func: () => {
-          alert('projects');
-          //this.router.navigate(['']);
-        },
-      },
-      {
-        imgUrl: 'assets/skills-icon.png',
-        func: () => {
-          alert('skills');
-          //this.router.navigate(['']);
-        },
-      },
-      {
-        imgUrl: 'assets/contact-icon.png',
-        func: () => {
-          alert('contact');
-          //this.router.navigate(['']);
-        },
-      },
-      {
-        imgUrl: 'assets/blog-icon.png',
-        func: () => {
-          alert('blog');
-          //this.router.navigate(['']);
-        },
-      },
-    ].length
-  ).toBe(5);
+    ];
+    comp.logoUrl = 'logoUrl';
+    expect(comp.items).toBeDefined();
+    expect(comp.items.length).toBe(1);
+    expect(comp.logoUrl).toMatch('logoUrl');
+  });
+
+  test('Test component ngOnInit', () => {
+    comp.ngOnInit();
+    expect(comp.items).toBeDefined();
+    expect(comp.items.length).toBe(5);
+    const w = jest.spyOn(window, 'alert').mockReturnValue();
+
+    for (let item of comp.items) {
+      const mock = jest.spyOn(item, 'func');
+      expect(item).toBeDefined();
+      item.func();
+      expect(mock).toHaveBeenCalledTimes(1);
+      expect(item.imgUrl.length).toBeGreaterThan(0);
+    }
+    expect(w).toHaveBeenCalledTimes(5);
+  });
 });
