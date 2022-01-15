@@ -1,5 +1,6 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { HomeComponent } from './home.component';
 
 describe('Test home component', () => {
@@ -8,8 +9,10 @@ describe('Test home component', () => {
   let comp: HomeComponent;
 
   beforeEach(() => {
+    const mockRouter = jest.mock('@angular/router');
     module = TestBed.configureTestingModule({
       declarations: [HomeComponent],
+      providers: [{ provide: Router, useValue: mockRouter }],
       schemas: [NO_ERRORS_SCHEMA],
     });
     fixture = module.createComponent(HomeComponent);

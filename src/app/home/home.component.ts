@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SpeedDialItem } from '../shared/speed-dial/speeddial-item';
 
 @Component({
@@ -10,6 +11,8 @@ export class HomeComponent implements OnInit {
   items!: SpeedDialItem[];
   logoUrl = 'assets/logo.png';
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
     this.initItems();
   }
@@ -19,8 +22,7 @@ export class HomeComponent implements OnInit {
       {
         imgUrl: 'assets/profile-icon.png',
         func: () => {
-          alert('profile');
-          //this.router.navigate(['']);
+          this.router.navigate(['profile']);
         },
       },
       {
