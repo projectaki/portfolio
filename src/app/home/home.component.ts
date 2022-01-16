@@ -28,29 +28,25 @@ export class HomeComponent implements OnInit {
       {
         imgUrl: 'assets/projects-icon.png',
         func: () => {
-          alert('projects');
-          //this.router.navigate(['']);
+          this.router.navigate(['']);
         },
       },
       {
         imgUrl: 'assets/skills-icon.png',
         func: () => {
-          alert('skills');
-          //this.router.navigate(['']);
+          this.router.navigate(['']);
         },
       },
       {
         imgUrl: 'assets/contact-icon.png',
         func: () => {
-          alert('contact');
-          //this.router.navigate(['']);
+          this.router.navigate(['']);
         },
       },
       {
         imgUrl: 'assets/blog-icon.png',
         func: () => {
-          alert('blog');
-          //this.router.navigate(['']);
+          this.router.navigate(['']);
         },
       },
     ]);
