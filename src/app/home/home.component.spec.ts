@@ -1,18 +1,22 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 
 describe('Test home component', () => {
-  let module;
   let fixture;
   let comp: HomeComponent;
-
+  let router: Router;
   beforeEach(() => {
-    module = TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       declarations: [HomeComponent],
+      imports: [RouterTestingModule.withRoutes([])],
+      //providers: [{ provide: Router, useValue: mockRouter }],
       schemas: [NO_ERRORS_SCHEMA],
-    });
-    fixture = module.createComponent(HomeComponent);
+    }).compileComponents();
+    fixture = TestBed.createComponent(HomeComponent);
+    router = TestBed.inject(Router);
     comp = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -35,18 +39,19 @@ describe('Test home component', () => {
   });
 
   test('Test component ngOnInit', () => {
+    const navigateSpy = jest.spyOn(router, 'navigate');
     comp.ngOnInit();
     expect(comp.items).toBeDefined();
     expect(comp.items.length).toBe(5);
-    const w = jest.spyOn(window, 'alert').mockReturnValue();
 
     for (let item of comp.items) {
       const mock = jest.spyOn(item, 'func');
       expect(item).toBeDefined();
-      item.func();
+      const call = item.func;
+      call();
       expect(mock).toHaveBeenCalledTimes(1);
       expect(item.imgUrl.length).toBeGreaterThan(0);
     }
-    expect(w).toHaveBeenCalledTimes(5);
+    expect(navigateSpy).toHaveBeenCalledTimes(5);
   });
 });
