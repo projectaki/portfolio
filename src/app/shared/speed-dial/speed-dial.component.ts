@@ -20,7 +20,7 @@ export class SpeedDialComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private readonly _click = new BehaviorSubject<boolean>(this.opened);
   private click$ = this._click.asObservable().pipe(skip(1));
-  private unsub$ = new Subject();
+  private unsub$ = new Subject<void>();
 
   constructor() {}
 
