@@ -1,0 +1,5 @@
+<mat-selection-list [multiple]="false" (selectionChange)="selectTrigger()">
+  <mat-list-option *ngFor="let el of elements" [value]="el.name" [routerLink]="[el.route]">
+    {{ el.name }}
+  </mat-list-option>
+</mat-selection-list>

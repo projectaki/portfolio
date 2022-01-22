@@ -4,9 +4,10 @@ import { LayoutComponent } from './layout.component';
 import { SharedModule } from '../shared/shared.module';
 import { StarBackgroundComponent } from './star-background/star-background.component';
 import { RouterModule } from '@angular/router';
+import { NavListComponent } from './nav-list/nav-list.component';
 
 @NgModule({
-  declarations: [LayoutComponent, StarBackgroundComponent],
+  declarations: [LayoutComponent, StarBackgroundComponent, NavListComponent],
   imports: [CommonModule, SharedModule, RouterModule],
 })
 export class LayoutModule {}
