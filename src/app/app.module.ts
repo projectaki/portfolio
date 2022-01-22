@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { LayoutModule } from './layout/layout.module';
@@ -12,7 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   declarations: [AppComponent],
   imports: [
     AppRoutingModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     SharedModule,
     HomeModule,
     LayoutModule,

@@ -9,7 +9,7 @@ const routes: Routes = [
     component: LayoutComponent,
 
     children: [
-      { path: 'home', component: HomeComponent },
+      { path: '', component: HomeComponent },
       {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
@@ -31,9 +31,8 @@ const routes: Routes = [
         loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule),
       },
       {
-        path: '',
+        path: '**',
         redirectTo: 'home',
-        pathMatch: 'full',
       },
     ],
   },

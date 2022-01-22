@@ -7,6 +7,11 @@
 }
 
 .sidenav {
-  width: 200px;
-  // padding: 1em;
+  width: 20em;
+}
+
+@media screen and (max-width: 720px) {
+  .sidenav {
+    width: 100%;
+  }
 }

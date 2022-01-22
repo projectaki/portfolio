@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SpeedDialComponent } from './speed-dial/speed-dial.component';
+import { ToggleSidenavDirective } from '../core/directives/toggle-sidenav.directive';
 
 @NgModule({
-  declarations: [SpeedDialComponent],
-  imports: [BrowserModule, MatSidenavModule, FlexLayoutModule],
-  exports: [BrowserModule, MatSidenavModule, SpeedDialComponent, FlexLayoutModule],
+  declarations: [SpeedDialComponent, ToggleSidenavDirective],
+  imports: [MatSidenavModule, FlexLayoutModule],
+  exports: [MatSidenavModule, SpeedDialComponent, FlexLayoutModule, ToggleSidenavDirective],
 })
 export class SharedModule {}
