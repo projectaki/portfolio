@@ -1,4 +1,6 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav class="sidenav" [mode]="isScreenSmall ? 'over' : 'side'"></mat-sidenav>
+  <mat-sidenav #sidenav class="sidenav" [mode]="isScreenSmall ? 'over' : 'side'">
+    <app-nav-list (selectionChanged)="handleSelection()"></app-nav-list>
+  </mat-sidenav>
   <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
 </mat-sidenav-container>

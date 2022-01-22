@@ -24,4 +24,10 @@ export class LayoutComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     this.layoutService.toggleSidenav$.subscribe(() => this.sidenav.toggle());
   }
+
+  handleSelection() {
+    if (this.isScreenSmall) {
+      this.sidenav.close();
+    }
+  }
 }
