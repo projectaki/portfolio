@@ -14,7 +14,7 @@ export class NavListComponent {
     { name: 'Profile', route: '/profile' },
     { name: 'Projects', route: '/projects' },
     //{ name: 'Skills', route: '/skills' },
-    { name: 'Contacts', route: '/contacts' },
+    //{ name: 'Contacts', route: '/contacts' },
     //{ name: 'Blog', route: '/blog' },
   ];
 

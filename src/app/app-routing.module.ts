@@ -22,10 +22,10 @@ const routes: Routes = [
       //   path: 'blog',
       //   loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule),
       // },
-      {
-        path: 'contacts',
-        loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule),
-      },
+      // {
+      //   path: 'contacts',
+      //   loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule),
+      // },
       {
         path: 'projects',
         loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule),

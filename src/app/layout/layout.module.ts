@@ -6,9 +6,10 @@ import { StarBackgroundComponent } from './star-background/star-background.compo
 import { RouterModule } from '@angular/router';
 import { NavListComponent } from './nav-list/nav-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [LayoutComponent, StarBackgroundComponent, NavListComponent, NavbarComponent],
+  declarations: [LayoutComponent, StarBackgroundComponent, NavListComponent, NavbarComponent, FooterComponent],
   imports: [CommonModule, SharedModule, RouterModule],
 })
 export class LayoutModule {}
