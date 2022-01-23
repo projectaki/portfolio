@@ -13,9 +13,9 @@ export class NavListComponent {
     { name: 'Home', route: '' },
     { name: 'Profile', route: '/profile' },
     { name: 'Projects', route: '/projects' },
-    { name: 'Skills', route: '/skills' },
+    //{ name: 'Skills', route: '/skills' },
     { name: 'Contacts', route: '/contacts' },
-    { name: 'Blog', route: '/blog' },
+    //{ name: 'Blog', route: '/blog' },
   ];
 
   constructor() {}

@@ -14,14 +14,14 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
       },
-      {
-        path: 'skills',
-        loadChildren: () => import('./skills/skills.module').then(m => m.SkillsModule),
-      },
-      {
-        path: 'blog',
-        loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule),
-      },
+      // {
+      //   path: 'skills',
+      //   loadChildren: () => import('./skills/skills.module').then(m => m.SkillsModule),
+      // },
+      // {
+      //   path: 'blog',
+      //   loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule),
+      // },
       {
         path: 'contacts',
         loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule),

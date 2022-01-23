@@ -1,1 +1,5 @@
-<div>hello</div>
+<div class="card-container" fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="20px grid">
+  <div *ngFor="let project of projects">
+    <app-project-card [project]="project"> </app-project-card>
+  </div>
+</div>
