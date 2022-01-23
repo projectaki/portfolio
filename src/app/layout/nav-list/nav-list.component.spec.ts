@@ -18,7 +18,15 @@ describe('NavListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  test('should trigger selection changed ', done => {
+    component.selectionChanged.subscribe(x => {
+      expect(x).toBeUndefined();
+      done();
+    });
+    component.onSelectionChanged();
   });
 });

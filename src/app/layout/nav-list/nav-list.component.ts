@@ -8,6 +8,7 @@ import { ListItem } from 'src/app/shared/list/list-item';
 })
 export class NavListComponent {
   @Output() selectionChanged = new EventEmitter<void>();
+
   links: ListItem[] = [
     { name: 'Home', route: '' },
     { name: 'Profile', route: '/profile' },

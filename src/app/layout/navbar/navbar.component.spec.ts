@@ -18,7 +18,11 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  test('should contain logoURL', () => {
+    expect(component.logoUrl).toBe('assets/logo.png');
   });
 });

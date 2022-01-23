@@ -14,7 +14,7 @@ describe('LayoutService', () => {
     expect(service).toBeTruthy();
   });
 
-  test.only('toggle sidenav on method call', done => {
+  test('toggle sidenav on method call', done => {
     service.toggleSidenav$.subscribe(x => {
       expect(x).toBeUndefined();
       done();
