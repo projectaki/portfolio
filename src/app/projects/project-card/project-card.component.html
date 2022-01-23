@@ -1,0 +1,13 @@
+<mat-card class="example-card">
+  <mat-card-title>{{ project.title }}</mat-card-title>
+  <mat-divider inset></mat-divider>
+  <mat-card-content>
+    <p>{{ project.description }}</p>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-actions>
+    <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer"
+      ><button mat-raised-button color="primary">Link</button></a
+    >
+  </mat-card-actions>
+</mat-card>
