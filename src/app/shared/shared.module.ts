@@ -7,10 +7,11 @@ import { ToggleSidenavDirective } from '../core/directives/toggle-sidenav.direct
 import { ListComponent } from './list/list.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [SpeedDialComponent, ToggleSidenavDirective, ListComponent],
-  imports: [CommonModule, RouterModule, MatSidenavModule, FlexLayoutModule, MatListModule],
+  imports: [CommonModule, RouterModule, MatSidenavModule, FlexLayoutModule, MatListModule, MatToolbarModule],
   exports: [
     CommonModule,
     RouterModule,
@@ -20,6 +21,7 @@ import { RouterModule } from '@angular/router';
     ToggleSidenavDirective,
     MatListModule,
     ListComponent,
+    MatToolbarModule,
   ],
 })
 export class SharedModule {}
