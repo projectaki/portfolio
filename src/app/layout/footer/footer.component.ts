@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GithubService } from 'src/app/core/services/github.service';
+import { GithubService } from '../../core/services/github.service';
 
 @Component({
   selector: 'app-footer',
