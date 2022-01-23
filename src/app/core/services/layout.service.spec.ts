@@ -10,7 +10,15 @@ describe('LayoutService', () => {
     service = TestBed.inject(LayoutService);
   });
 
-  it('should be created', () => {
+  test('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  test.only('toggle sidenav on method call', done => {
+    service.toggleSidenav$.subscribe(x => {
+      expect(x).toBeUndefined();
+      done();
+    });
+    service.toggleSidenav();
   });
 });
