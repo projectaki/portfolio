@@ -1,0 +1,11 @@
+identifier: k9ybt702x6l05eh7
+appPort: 1864
+staticPort: 1668
+reloadPort: 2667
+hostName: localhost
+projectName: portfolio
+homeFolder: C:\dev\Projects\portfolio
+distFolder: dist/portfolio
+outDir: C:\dev\Projects\portfolio\dist\static
+handle404: ''
+allowErrorCollect: false
