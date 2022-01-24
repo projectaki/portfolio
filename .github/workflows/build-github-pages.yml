@@ -72,7 +72,7 @@ jobs:
         run: npm ci
 
       - name: build to github pages
-      - uses: cmgriffing/scully-gh-pages-action@v9
+        uses: cmgriffing/scully-gh-pages-action@v9
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
         # env:
