@@ -7,6 +7,7 @@ import { HomeModule } from './home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     LayoutModule,
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
+    ScullyLibModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
