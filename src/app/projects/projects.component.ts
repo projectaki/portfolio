@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Project } from './project-card/project';
 
 @Component({
@@ -44,5 +45,7 @@ export class ProjectsComponent {
       link: 'https://github.com/projectaki/Hashing',
     },
   ];
-  constructor() {}
+  constructor(private title: Title) {
+    this.title.setTitle('Projects');
+  }
 }
