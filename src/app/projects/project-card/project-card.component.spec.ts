@@ -19,6 +19,7 @@ describe('ProjectCardComponent', () => {
       title: 'test',
       description: 'desc',
       link: 'link',
+      technologies: [],
     };
     fixture.detectChanges();
   });

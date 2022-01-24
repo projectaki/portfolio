@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [SpeedDialComponent, ToggleSidenavDirective, ListComponent],
@@ -22,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
   ],
   exports: [
     CommonModule,
@@ -35,6 +37,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
   ],
 })
 export class SharedModule {}

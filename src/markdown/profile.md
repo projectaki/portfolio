@@ -20,8 +20,13 @@
 ### Other technologies
 
 ![Javascript](https://img.shields.io/badge/-JavaScript-f7df1e?logo=javascript&logoColor=black&style=flat)
+![RxJs](https://img.shields.io/badge/RxJs-E60E88?logo=reactivex&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-white?logo=jest&logoColor=E60E88)
+![Cypress](https://img.shields.io/badge/Cypress-white?logo=cypress&logoColor=green)
+![Github](https://img.shields.io/badge/Github-black?logo=github&logoColor=purple)
+![Markdown](https://img.shields.io/badge/Markdown-black?logo=markdown&logoColor=blue)
 ![Nodejs](https://img.shields.io/badge/-NodeJs-43853D?logo=node.js&logoColor=black&style=flat)
-![Mongodb](https://img.shields.io/badge/MongoDB-4ea94b.svg?logo=mongodb&logoColor=white)
+![Mongodb](https://img.shields.io/badge/MongoDB-4ea94b.svg?logo=mongodb&logoColor=white)  
 ![Graphql](https://img.shields.io/badge/GraphQL-161e26?logo=graphql&logoColor=e535ab)
 ![Css](https://img.shields.io/badge/CSS-white?logo=css3&logoColor=264de4)
 ![Html](https://img.shields.io/badge/HTML-grey?logo=html5&logoColor=e34c26)

@@ -5,6 +5,31 @@
   transform: translate(-50%, -50%);
 }
 
+.socials {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+.git-logo {
+  width: 32px;
+  margin: 0;
+}
+
+.git-logo:hover {
+  cursor: pointer;
+}
+
+.li-logo {
+  width: 36px;
+  height: 30px;
+  margin: 0;
+}
+
+.li-logo:hover {
+  cursor: pointer;
+}
+
 .logo {
   width: 12em;
 }
