@@ -8,15 +8,26 @@
 }
 
 :host ::ng-deep {
-  * {
-    font-family: 'Open Sans';
-  }
-
   h1 {
+    font-family: 'Segoe UI';
     font-weight: 700;
+    font-size: 36px;
   }
 
   h2 {
-    font-style: italic;
+    font-family: 'Segoe UI';
+    font-weight: 500;
+    font-size: 26px;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  h3 {
+    font-family: 'Segoe UI';
+    font-weight: 500;
+    font-size: 24px;
   }
 }
