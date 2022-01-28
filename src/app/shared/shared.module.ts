@@ -11,9 +11,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { TimelineModule } from 'primeng/timeline';
+import { TimelineComponent } from './timeline/timeline.component';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
-  declarations: [SpeedDialComponent, ToggleSidenavDirective, ListComponent],
+  declarations: [SpeedDialComponent, ToggleSidenavDirective, ListComponent, TimelineComponent, TimelineComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -24,9 +27,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    TimelineModule,
+    CardModule,
   ],
   exports: [
     CommonModule,
+    TimelineComponent,
     RouterModule,
     MatSidenavModule,
     SpeedDialComponent,
@@ -38,6 +44,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    TimelineModule,
+    CardModule,
   ],
 })
 export class SharedModule {}
