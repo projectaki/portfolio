@@ -6,14 +6,13 @@
 
 I studied mainly backend development, and only in 2021, I started to gain an interest in frontend development.  
 I first started out with React, but I switched to Angular for my job and I decided to focus on that. My first projects,  
-were in React, and since then I have worked on few Angular projects such as this one. These projects are mainly frontend only,  
-but some of them call external APIs, and some of them have their own server.
+were in React, and since then I have worked on few Angular projects such as this one.
 
 ## This project
 
 I made this portfolio project as an upgrade to my previous portfolio which is found below in the list of projects.  
-I created this portfolio using best practices, and utilising an automated CI/CD pipeline. I use git pre-commit hooks,  
-for linting and formatting. I use a multi-stage github action yaml pipeline for testing, building and releasing this project.
+I created this portfolio using best practices, and utilising a `CI/CD` pipeline. I use git pre-commit hooks,  
+for linting and `formatting`. I use a `multi-stage github action` yaml pipeline for `testing`, `building` and `releasing` this project.
 
 ### Technologies used for this project:
 
