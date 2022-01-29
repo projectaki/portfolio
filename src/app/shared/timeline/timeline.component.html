@@ -1,19 +1,17 @@
 <div class="card">
-  <h5>Customized</h5>
-  <p-timeline [value]="events" align="alternate" styleClass="customized-timeline">
+  <p-timeline [value]="timelineItems" align="alternate" styleClass="customized-timeline">
     <ng-template pTemplate="marker" let-event>
-      <span class="custom-marker p-shadow-2" [style.backgroundColor]="event.color">
+      <span class="custom-marker p-shadow-2" [style.backgroundColor]="'#be145b'" [style.color]="'black'">
         <i [ngClass]="event.icon"></i>
       </span>
     </ng-template>
     <ng-template pTemplate="content" let-event>
-      <p-card [header]="event.status" [subheader]="event.date">
+      <p-card>
+        <h3>{{ event.title }}</h3>
+        <h4>{{ event.date }}</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam
-          deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
-          neque quas!
+          {{ event.description }}
         </p>
-        <button pButton label="Read more" class="p-button-text"></button>
       </p-card>
     </ng-template>
   </p-timeline>
