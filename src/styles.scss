@@ -2,12 +2,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+:root {
+  --bg-color: rgb(20, 20, 20);
+  --font-color: rgb(255, 255, 255);
+}
+.lightMode {
+  --bg-color: rgb(255, 255, 255);
+  --font-color: rgb(20, 20, 20);
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', 'Open Sans', sans-serif;
-  background-color: rgb(40, 40, 40);
+  background-color: var(--bg-color);
+  color: var(--font-light);
+}
+
+.background {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+.hidden {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.nomargin {
+  margin: 0;
 }
 
 * {
