@@ -14,3 +14,21 @@ mat-toolbar {
 mat-icon {
   cursor: pointer;
 }
+
+.theme-toggle {
+  cursor: pointer;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+@media screen and (max-width: 720px) {
+  .nav-toggle {
+    display: block;
+  }
+}

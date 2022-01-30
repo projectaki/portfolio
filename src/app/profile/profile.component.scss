@@ -1,6 +1,5 @@
 .container {
   min-height: 100%;
-  background-color: rgb(20, 20, 20);
 }
 
 .vertical-spacer {
@@ -10,11 +9,11 @@
 
 .profile-md {
   padding: 2em;
-  background-color: rgb(20, 20, 20);
 }
 
 .timeline-cont {
   padding: 2em;
+  color: white;
 }
 
 :host ::ng-deep {
