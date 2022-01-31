@@ -39,11 +39,11 @@ a {
   font-family: 'Segoe UI';
 }
 
-pre {
-  display: inline-block;
-  min-width: 300px;
-  max-width: calc(100% - 2em);
-}
+// pre {
+//   display: inline-block;
+//   min-width: 300px;
+//   max-width: calc(100% - 2em);
+// }
 
 @media screen and (max-width: 360px) {
   pre {

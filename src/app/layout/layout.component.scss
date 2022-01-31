@@ -11,13 +11,14 @@ $navbar-height: 60px;
   display: flex;
   height: calc(100% - $navbar-height);
   overflow-y: scroll;
+  width: 100%;
 }
 
 .sidenav {
   width: $sidenav-width;
   height: 100%;
   position: fixed;
-  border-right: 1px solid white;
+  border-right: 1px solid grey;
 }
 
 .sidenav-mobile {
@@ -29,13 +30,15 @@ $navbar-height: 60px;
 
 .toc {
   width: $toc-width;
-  height: 100%;
+  height: 50%;
+  border-left: 1px solid grey;
+  position: fixed;
+  right: 0;
 }
 
 .page-content {
   margin-left: $sidenav-width;
-  margin-right: $toc-width;
-  width: 100%;
+  width: calc(100% - $toc-width - $sidenav-width);
 }
 
 @media screen and (max-width: 900px) {
@@ -45,6 +48,7 @@ $navbar-height: 60px;
 
   .page-content {
     margin-right: 0;
+    width: calc(100% - $sidenav-width);
   }
 }
 
@@ -59,5 +63,6 @@ $navbar-height: 60px;
 
   .page-content {
     margin-left: 0;
+    width: 100%;
   }
 }
