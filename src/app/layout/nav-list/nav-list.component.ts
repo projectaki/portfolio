@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { ScullyRoute, ScullyRoutesService } from '@scullyio/ng-lib';
+import { Observable } from 'rxjs';
 import { ListItem } from 'src/app/shared/list/list-item';
 
 @Component({
@@ -7,7 +9,7 @@ import { ListItem } from 'src/app/shared/list/list-item';
   styleUrls: ['./nav-list.component.scss'],
 })
 export class NavListComponent {
-  @Output() selectionChanged = new EventEmitter<void>();
+  links$: Observable<ScullyRoute[]> = this.scully.available$;
 
   links: ListItem[] = [
     { name: 'Home', route: '' },
@@ -18,9 +20,11 @@ export class NavListComponent {
     //{ name: 'Blog', route: '/blog' },
   ];
 
-  constructor() {}
+  constructor(private scully: ScullyRoutesService) {}
 
-  onSelectionChanged() {
-    this.selectionChanged.emit();
+  ngOnInit() {
+    this.links$.subscribe(links => {
+      console.log(links);
+    });
   }
 }

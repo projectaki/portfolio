@@ -19,4 +19,37 @@
   <body class="mat-typography">
     <app-root></app-root>
   </body>
+  <script>
+    const sidenav = document.querySelector('#sidenav-mobile');
+    const sidenavToggle = document.querySelector('#sidenav-toggle');
+    const themeToggle = document.getElementById('toggle');
+    const links = document.querySelectorAll('.nav-link');
+
+    if (links.length > 0) {
+      links.forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+    }
+
+    if (sidenav && sidenavToggle) {
+      sidenavToggle.addEventListener('click', toggle);
+    }
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    function toggle() {
+      sidenav?.classList.toggle('hidden');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('lightMode');
+    }
+
+    function closeMenu() {
+      const contains = sidenav.classList.contains('hidden');
+      if (!contains) sidenav.classList.add('hidden');
+    }
+  </script>
 </html>
