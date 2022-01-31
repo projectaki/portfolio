@@ -8,9 +8,10 @@ import { LayoutModule } from './layout/layout.module';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ScullyLibModule } from '@scullyio/ng-lib';
+import { TocComponent } from './toc/toc.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TocComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,

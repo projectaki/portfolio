@@ -1,5 +1,4 @@
 $sidenav-width: 20em;
-$toc-width: 15em;
 $navbar-height: 60px;
 
 .example-container {
@@ -28,36 +27,13 @@ $navbar-height: 60px;
   height: 100%;
 }
 
-.toc {
-  width: $toc-width;
-  height: 50%;
-  border-left: 1px solid grey;
-  position: fixed;
-  right: 0;
-}
-
 .page-content {
   margin-left: $sidenav-width;
-  width: calc(100% - $toc-width - $sidenav-width);
+  width: calc(100% - $sidenav-width);
 }
 
-@media screen and (max-width: 900px) {
-  .toc {
-    display: none;
-  }
-
-  .page-content {
-    margin-right: 0;
-    width: calc(100% - $sidenav-width);
-  }
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
   .sidenav {
-    display: none;
-  }
-
-  .toc {
     display: none;
   }
 

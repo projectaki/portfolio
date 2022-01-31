@@ -1,3 +1,8 @@
+.container {
+  position: relative;
+  min-height: 100%;
+}
+
 .logo-container {
   position: absolute;
   top: 50%;
@@ -32,9 +37,4 @@
 
 .logo {
   width: 12em;
-}
-
-.background {
-  min-height: 100%;
-  width: 100%;
 }

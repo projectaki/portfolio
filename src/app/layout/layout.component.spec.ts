@@ -31,29 +31,29 @@ describe('Layout component', () => {
     expect(mockBpo).toBeDefined();
   });
 
-  test('should toggle sidenav when layoutservice emits', () => {
-    const spy = jest.spyOn(comp.sidenav, 'toggle');
+  // test('should toggle sidenav when layoutservice emits', () => {
+  //   const spy = jest.spyOn(comp.sidenav, 'toggle');
 
-    mockLayoutService.toggleSidenav();
+  //   mockLayoutService.toggleSidenav();
 
-    expect(spy).toHaveBeenCalled();
-  });
+  //   expect(spy).toHaveBeenCalled();
+  // });
 
-  test('shouldnt close sidenav if screen is big', () => {
-    const spy = jest.spyOn(comp.sidenav, 'close');
-    comp.isScreenSmall = false;
+  // test('shouldnt close sidenav if screen is big', () => {
+  //   const spy = jest.spyOn(comp.sidenav, 'close');
+  //   comp.isScreenSmall = false;
 
-    comp.handleSelection();
+  //   comp.handleSelection();
 
-    expect(spy).toHaveBeenCalledTimes(0);
-  });
+  //   expect(spy).toHaveBeenCalledTimes(0);
+  // });
 
-  test('should close sidenav if screen is small', () => {
-    const spy = jest.spyOn(comp.sidenav, 'close');
-    comp.isScreenSmall = true;
+  // test('should close sidenav if screen is small', () => {
+  //   const spy = jest.spyOn(comp.sidenav, 'close');
+  //   comp.isScreenSmall = true;
 
-    comp.handleSelection();
+  //   comp.handleSelection();
 
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
+  //   expect(spy).toHaveBeenCalledTimes(1);
+  // });
 });
