@@ -22,9 +22,5 @@ export class NavListComponent {
 
   constructor(private scully: ScullyRoutesService) {}
 
-  ngOnInit() {
-    this.links$.subscribe(links => {
-      console.log(links);
-    });
-  }
+  //
 }
