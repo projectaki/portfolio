@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ScullyRoute, ScullyRoutesService } from '@scullyio/ng-lib';
-import { Observable } from 'rxjs';
 import { ListItem } from 'src/app/shared/list/list-item';
 
 @Component({
@@ -9,8 +7,6 @@ import { ListItem } from 'src/app/shared/list/list-item';
   styleUrls: ['./nav-list.component.scss'],
 })
 export class NavListComponent {
-  links$: Observable<ScullyRoute[]> = this.scully.available$;
-
   links: ListItem[] = [
     { name: 'Home', route: '' },
     { name: 'Profile', route: '/profile' },
@@ -20,7 +16,7 @@ export class NavListComponent {
     //{ name: 'Blog', route: '/blog' },
   ];
 
-  constructor(private scully: ScullyRoutesService) {}
+  constructor() {}
 
   //
 }
