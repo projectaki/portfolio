@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { TimelineModule } from 'primeng/timeline';
 import { TimelineComponent } from './timeline/timeline.component';
 import { CardModule } from 'primeng/card';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [SpeedDialComponent, ToggleSidenavDirective, ListComponent, TimelineComponent, TimelineComponent],
@@ -29,6 +30,7 @@ import { CardModule } from 'primeng/card';
     MatIconModule,
     TimelineModule,
     CardModule,
+    FontAwesomeModule,
   ],
   exports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { CardModule } from 'primeng/card';
     MatIconModule,
     TimelineModule,
     CardModule,
+    FontAwesomeModule,
   ],
 })
 export class SharedModule {}
