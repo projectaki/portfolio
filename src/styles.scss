@@ -39,6 +39,14 @@ a {
   font-family: 'Segoe UI';
 }
 
+.toc-link {
+  padding: 5px;
+}
+
+.toc-link:hover {
+  color: #c2185b;
+  cursor: pointer;
+}
 // pre {
 //   display: inline-block;
 //   min-width: 300px;

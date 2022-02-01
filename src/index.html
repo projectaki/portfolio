@@ -25,6 +25,8 @@
     const themeToggle = document.getElementById('toggle');
     const links = document.querySelectorAll('.nav-link');
 
+    setInitialTheme();
+
     if (links.length > 0) {
       links.forEach(link => {
         link.addEventListener('click', closeMenu);
@@ -44,7 +46,23 @@
     }
 
     function toggleTheme() {
+      const isDark = !document.body.classList.contains('lightMode');
       document.body.classList.toggle('lightMode');
+      localStorage.setItem('darkMode', !isDark);
+
+      themeToggle.innerHTML = isDark ? '🌚' : '🌞';
+    }
+
+    function setInitialTheme() {
+      const isDark = JSON.parse(localStorage.getItem('darkMode'));
+      if (isDark !== null && isDark !== undefined) {
+        if (!isDark) {
+          document.body.classList.add('lightMode');
+          themeToggle.innerHTML = '🌞';
+        }
+      } else {
+        themeToggle.innerHTML = '🌚';
+      }
     }
 
     function closeMenu() {
@@ -64,11 +82,15 @@
     function createEl({ id, title }) {
       const div = document.createElement('div');
 
-      div.onclick = () => document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      div.onclick = () => onClickHandler(id, div);
       div.innerText = title;
-      div.classList.add('nav-link');
-      div.classList.add('nav-link:hover');
+      div.classList.add('toc-link');
       return div;
+    }
+
+    function onClickHandler(id, div) {
+      const el = document.getElementById(id);
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function recurse({ elem, parent }) {
@@ -84,10 +106,11 @@
         recurse({ elem: child, parent });
       }
     }
-
-    recurse({
-      elem: document.querySelector('app-toc .page-content'),
-      parent: document.querySelector('#toc-container'),
-    });
+    if (pageContent && tocContainer) {
+      recurse({
+        elem: pageContent,
+        parent: tocContainer,
+      });
+    }
   </script>
 </html>

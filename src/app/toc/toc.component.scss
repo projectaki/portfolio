@@ -1,7 +1,10 @@
 $toc-width: 15em;
 
+.toc-container {
+  padding: 1em;
+}
+
 .toc {
-  height: 50%;
   border-left: 1px solid grey;
   position: fixed;
   top: 60px;
