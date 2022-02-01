@@ -19,7 +19,8 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "scully": "npx scully --",
-    "scully:serve": "npx scully serve --"
+    "scully:serve": "npx scully serve --",
+    "scully:build": "ng build --stats-json && npx scully && npx scully serve"
   },
   "private": true,
   "dependencies": {

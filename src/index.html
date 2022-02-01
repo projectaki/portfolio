@@ -30,25 +30,20 @@
     setInitialTheme();
     setPreStyle();
     setCurrentRouterHighlight();
-    if (pageContent && tocContainer) {
-      recurse({
-        elem: pageContent,
-        parent: tocContainer,
-      });
-    }
+    createTOCFromHeadings();
+    regEventListeners();
 
-    if (links.length > 0) {
+    function regEventListeners() {
       links.forEach(link => {
         link.addEventListener('click', closeMenu);
       });
-    }
-
-    if (sidenav && sidenavToggle) {
       sidenavToggle.addEventListener('click', toggle);
+      themeToggle.addEventListener('click', toggleTheme);
     }
 
-    if (themeToggle) {
-      themeToggle.addEventListener('click', toggleTheme);
+    function closeMenu() {
+      const contains = sidenav.classList.contains('hidden');
+      if (!contains) sidenav.classList.add('hidden');
     }
 
     function toggle() {
@@ -63,17 +58,6 @@
       setThemeIcon(!isDark);
     }
 
-    function setThemeIcon(isDark) {
-      themeToggle.innerHTML = isDark ? '🌞' : '🌚';
-    }
-
-    function setPreStyle() {
-      const pres = document.querySelectorAll('pre');
-      const preConts = [...pres].map(x => x.parentElement);
-
-      preConts.forEach(p => p.classList.add('code-block'));
-    }
-
     function setInitialTheme() {
       const isDark = JSON.parse(localStorage.getItem('darkMode'));
       if (isDark === null || isDark) {
@@ -86,6 +70,17 @@
       }
     }
 
+    function setThemeIcon(isDark) {
+      themeToggle.innerHTML = isDark ? '🌞' : '🌚';
+    }
+
+    function setPreStyle() {
+      const pres = document.querySelectorAll('pre');
+      const preConts = [...pres].map(x => x.parentElement);
+
+      preConts.forEach(p => p.classList.add('code-block'));
+    }
+
     function setCurrentRouterHighlight() {
       const pathname = window.location.pathname;
       const navLinks = document.querySelectorAll('.nav-link');
@@ -94,9 +89,27 @@
       });
     }
 
-    function closeMenu() {
-      const contains = sidenav.classList.contains('hidden');
-      if (!contains) sidenav.classList.add('hidden');
+    function createTOCFromHeadings() {
+      if (!pageContent || !tocContainer) return;
+      const search = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+
+      recurse({
+        elem: pageContent,
+        tocContainer,
+        search,
+      });
+    }
+
+    function recurse({ elem, tocContainer, search }) {
+      for (const child of elem.children) {
+        if (search.some(x => x === child.tagName)) {
+          child.id = getRandom();
+          const el = createEl({ id: child.id, title: child.innerText });
+
+          tocContainer.appendChild(el);
+        }
+        recurse({ elem: child, tocContainer, search });
+      }
     }
 
     function getRandom() {
@@ -126,20 +139,6 @@
       }
 
       el.classList.add('active');
-    }
-
-    function recurse({ elem, parent }) {
-      const search = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
-
-      for (const child of elem.children) {
-        if (search.some(x => x === child.tagName)) {
-          child.id = getRandom();
-          const el = createEl({ id: child.id, title: child.innerText });
-
-          parent.appendChild(el);
-        }
-        recurse({ elem: child, parent });
-      }
     }
   </script>
 </html>
