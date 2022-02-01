@@ -27,6 +27,7 @@
 
     setInitialTheme();
     setPreStyle();
+    setCurrentRouterHighlight();
 
     if (links.length > 0) {
       links.forEach(link => {
@@ -75,6 +76,14 @@
         setThemeIcon(false);
         document.body.classList.toggle('lightMode');
       }
+    }
+
+    function setCurrentRouterHighlight() {
+      const pathname = window.location.pathname;
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(l => {
+        if (l.pathname === pathname) l.style.backgroundColor = '#06c258';
+      });
     }
 
     function closeMenu() {
@@ -135,12 +144,5 @@
         parent: tocContainer,
       });
     }
-  </script>
-  <script>
-    const pathname = window.location.pathname;
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(l => {
-      if (l.pathname === pathname) l.style.backgroundColor = '#06c258';
-    });
   </script>
 </html>
