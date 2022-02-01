@@ -52,4 +52,42 @@
       if (!contains) sidenav.classList.add('hidden');
     }
   </script>
+  <script>
+    const tocContainer = document.querySelector('#toc-container');
+    const pageContent = document.querySelector('app-toc .page-content');
+
+    function getRandom() {
+      const array = new Uint32Array(1);
+      return window.crypto.getRandomValues(array)[0];
+    }
+
+    function createEl({ id, title }) {
+      const div = document.createElement('div');
+
+      div.onclick = () => document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      div.innerText = title;
+      div.classList.add('nav-link');
+      div.classList.add('nav-link:hover');
+      return div;
+    }
+
+    function recurse({ elem, parent }) {
+      const search = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+
+      for (const child of elem.children) {
+        if (search.some(x => x === child.tagName)) {
+          child.id = getRandom();
+          const el = createEl({ id: child.id, title: child.innerText });
+
+          parent.appendChild(el);
+        }
+        recurse({ elem: child, parent });
+      }
+    }
+
+    recurse({
+      elem: document.querySelector('app-toc .page-content'),
+      parent: document.querySelector('#toc-container'),
+    });
+  </script>
 </html>
