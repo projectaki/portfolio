@@ -6,9 +6,14 @@
   --bg-color: rgb(20, 20, 20);
   --font-color: rgb(255, 255, 255);
 }
+
 .lightMode {
   --bg-color: rgb(255, 255, 255);
   --font-color: rgb(20, 20, 20);
+}
+
+* {
+  font-family: 'Segoe UI';
 }
 
 html,
@@ -35,10 +40,30 @@ a {
   display: none;
 }
 
-* {
-  font-family: 'Segoe UI';
+// container generated for all pre tags
+.code-block {
+  display: inline-block;
+  min-width: 230px;
+  max-width: calc(100% - 2em);
 }
 
+// because of inline-block in container this is neccessary
+pre {
+  margin: 0 !important;
+}
+
+// Prism doesnt highlight inline blocks, so this is a solution
+code {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 3px 4px;
+  font: 12px Monaco, Consolas, 'Andale  Mono', 'DejaVu Sans Mono', monospace;
+  background-color: #333437;
+  color: white;
+}
+
+// For generated toc
 .toc-link {
   padding: 5px;
 }
@@ -48,34 +73,7 @@ a {
   cursor: pointer;
 }
 
-.code-block {
-  display: inline-block;
-  min-width: 230px;
-  max-width: calc(100% - 2em);
-}
-
-pre {
-  margin: 0 !important;
-}
-
 .active {
   color: rgb(6, 194, 88);
   font-weight: bold;
-}
-
-@media screen and (max-width: 360px) {
-  pre {
-    min-width: calc(100% - 2em);
-    max-width: calc(100% - 2em);
-  }
-}
-
-code {
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  padding: 3px 4px;
-  font: 12px Monaco, Consolas, 'Andale  Mono', 'DejaVu Sans Mono', monospace;
-  background-color: #333437;
-  color: white;
 }
