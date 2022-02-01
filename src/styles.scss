@@ -44,14 +44,24 @@ a {
 }
 
 .toc-link:hover {
-  color: #c2185b;
+  color: rgb(6, 194, 88);
   cursor: pointer;
 }
-// pre {
-//   display: inline-block;
-//   min-width: 300px;
-//   max-width: calc(100% - 2em);
-// }
+
+.code-block {
+  display: inline-block;
+  min-width: 230px;
+  max-width: calc(100% - 2em);
+}
+
+pre {
+  margin: 0 !important;
+}
+
+.active {
+  color: rgb(6, 194, 88);
+  font-weight: bold;
+}
 
 @media screen and (max-width: 360px) {
   pre {
@@ -67,4 +77,5 @@ code {
   padding: 3px 4px;
   font: 12px Monaco, Consolas, 'Andale  Mono', 'DejaVu Sans Mono', monospace;
   background-color: #333437;
+  color: white;
 }
