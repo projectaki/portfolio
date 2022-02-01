@@ -24,10 +24,18 @@
     const sidenavToggle = document.querySelector('#sidenav-toggle');
     const themeToggle = document.getElementById('toggle');
     const links = document.querySelectorAll('.nav-link');
+    const tocContainer = document.querySelector('#toc-container');
+    const pageContent = document.querySelector('app-toc .page-content');
 
     setInitialTheme();
     setPreStyle();
     setCurrentRouterHighlight();
+    if (pageContent && tocContainer) {
+      recurse({
+        elem: pageContent,
+        parent: tocContainer,
+      });
+    }
 
     if (links.length > 0) {
       links.forEach(link => {
@@ -90,10 +98,6 @@
       const contains = sidenav.classList.contains('hidden');
       if (!contains) sidenav.classList.add('hidden');
     }
-  </script>
-  <script>
-    const tocContainer = document.querySelector('#toc-container');
-    const pageContent = document.querySelector('app-toc .page-content');
 
     function getRandom() {
       const array = new Uint32Array(1);
@@ -136,13 +140,6 @@
         }
         recurse({ elem: child, parent });
       }
-    }
-
-    if (pageContent && tocContainer) {
-      recurse({
-        elem: pageContent,
-        parent: tocContainer,
-      });
     }
   </script>
 </html>
