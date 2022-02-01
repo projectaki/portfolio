@@ -1,0 +1,27 @@
+$toc-width: 15em;
+
+.toc-container {
+  padding: 1em;
+}
+
+.toc {
+  border-left: 1px solid grey;
+  position: fixed;
+  top: 60px;
+  right: 16px;
+  width: $toc-width;
+}
+
+.page-content {
+  margin-right: $toc-width;
+}
+
+@media screen and (max-width: 1200px) {
+  .toc {
+    display: none;
+  }
+
+  .page-content {
+    margin-right: 0;
+  }
+}

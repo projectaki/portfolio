@@ -1,10 +1,8 @@
 <app-navbar></app-navbar>
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav class="sidenav" [opened]="!isScreenSmall" [mode]="isScreenSmall ? 'over' : 'side'">
-    <app-nav-list (selectionChanged)="handleSelection()"></app-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="example-container">
+  <div id="sidenav" #sidenav class="sidenav"><app-nav-list></app-nav-list></div>
+  <div class="page-content"><router-outlet></router-outlet></div>
+</div>
+<div id="sidenav-mobile" class="sidenav-mobile hidden">
+  <app-nav-list></app-nav-list>
+</div>
