@@ -77,3 +77,13 @@ code {
   color: rgb(6, 194, 88);
   font-weight: bold;
 }
+
+blockquote {
+  background: var(--bg-color);
+  color: var(--font-color);
+  border: 1px solid #06c258;
+  padding: 1em 1em 1em 3em;
+  border-radius: 15px;
+  margin-left: 0;
+  max-width: 600px;
+}
