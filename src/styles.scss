@@ -66,6 +66,9 @@ code {
 // For generated toc
 .toc-link {
   padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .toc-link:hover {
