@@ -1,13 +1,22 @@
 .container {
   position: relative;
   min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.logo-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.text-container {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+@media screen and (max-width: 760px) {
+  .text-container {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
 .socials {
@@ -30,4 +39,41 @@ fa-icon {
 
 .logo {
   width: 12em;
+}
+
+:host ::ng-deep {
+  h1 {
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    font-size: 36px;
+  }
+
+  h2 {
+    font-family: 'Segoe UI';
+    font-weight: 500;
+    font-size: 26px;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  h3 {
+    font-family: 'Segoe UI';
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: 760px) {
+    h1 {
+      font-family: 'Segoe UI';
+      font-weight: 700;
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
 }

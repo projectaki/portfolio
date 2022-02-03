@@ -5,11 +5,13 @@
 :root {
   --bg-color: rgb(30, 30, 30);
   --font-color: rgb(255, 255, 255);
+  --nav-color: rgb(45, 45, 45);
 }
 
 .lightMode {
   --bg-color: rgb(255, 255, 255);
   --font-color: rgb(20, 20, 20);
+  --nav-color: rgb(255, 255, 255);
 }
 
 * {
@@ -34,6 +36,11 @@ a {
 .background {
   background-color: var(--bg-color);
   color: var(--font-color);
+}
+
+p > img,
+a > img {
+  height: 25px;
 }
 
 .hidden {

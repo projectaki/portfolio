@@ -1,27 +1,17 @@
 # Profile
 
----
+I ❤️ programming, and I made this portfolio to keep track of my progress.  
+I plan to keep it up to date, and also create a blog where I will write about  
+projects or implementations that I have done.
 
-## Hi I'm Akos! 👋
-
-💻 **I** am a fullstack developer! I currently work as a fulltime employee, and also code a lot in my free time.
-
-⚙️ **I** ❤️ learning all kinds of modern technologies, and problem solving in general! I am also very interested in algorithms and optimizations.
-
-🧹 **I** am very fond of clean architectures and clean code. I strive to write better code every day.
-
-🧪 **I** invest time into creating CI/CD pipelines, automation, and testing.
-
-🚀 **I** enjoy both server and client side coding.
-
-### Main stack:
+## Main stack:
 
 ![Angular](https://img.shields.io/badge/-Angular-dd1b16?logo=angular&logoColor=black&style=flat)
 ![Typescript](https://img.shields.io/badge/-typescript-blue?logo=typescript&logoColor=white&style=flat)
 ![CSharp](https://img.shields.io/badge/-C%23-9B4993?logo=C-sharp&logoColor=black&style=flat)
 ![SQL](https://img.shields.io/badge/MSSQL-gray?logo=microsoft-sql-server&logoColor=white)
 
-### Other technologies
+## Other technologies
 
 ![Javascript](https://img.shields.io/badge/-JavaScript-f7df1e?logo=javascript&logoColor=black&style=flat)
 ![RxJs](https://img.shields.io/badge/RxJs-E60E88?logo=reactivex&logoColor=white)
@@ -42,7 +32,7 @@
 const rocket = '🚀';
 ```
 
-### Work experience
+## Work experience
 
 > **Full-time developer - Human Risks**
 >
@@ -76,7 +66,7 @@ const rocket = '🚀';
 > Combining sensor data and ERP data for display as dashboards. Power BI and Plotly-Dash for live data.  
 > Windows and Linux services for hosting python app. Setting up data structure for future machine learning models.
 
-### Education
+## Education
 
 > **Bachelor`s degree in Software Development - University College of Northern Denmark**
 >

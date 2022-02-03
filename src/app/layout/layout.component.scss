@@ -9,7 +9,7 @@ $navbar-height: 60px;
   right: 0;
   display: flex;
   height: calc(100% - $navbar-height);
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
 }
 

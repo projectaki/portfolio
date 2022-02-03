@@ -6,7 +6,8 @@ mat-toolbar {
 }
 
 .navbar {
-  background-color: rgb(45, 45, 45);
+  background-color: var(--nav-color);
+  box-shadow: 0 0 20px -15px black;
 }
 
 .logo {

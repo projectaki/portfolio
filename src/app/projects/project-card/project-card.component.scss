@@ -1,11 +1,9 @@
-* {
-  font-family: 'Open Sans';
-}
-
 mat-card-title {
   font-weight: 700;
 }
 
 .example-card {
   max-width: 350px;
+  border: 1px solid #06c258;
+  border-radius: 15px;
 }
