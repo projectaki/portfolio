@@ -92,24 +92,50 @@
     function createTOCFromHeadings() {
       if (!pageContent || !tocContainer) return;
       const search = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+      const headerTocTuple = [];
 
-      recurse({
-        elem: pageContent,
-        tocContainer,
-        search,
-      });
+      recurse(
+        {
+          elem: pageContent,
+          tocContainer,
+          search,
+        },
+        headerTocTuple
+      );
+
+      //highlightOnScroll(headerTocTuple);
     }
 
-    function recurse({ elem, tocContainer, search }) {
+    function recurse({ elem, tocContainer, search }, headerTocTuple) {
       for (const child of elem.children) {
         if (search.some(x => x === child.tagName)) {
           child.id = getRandom();
           const el = createEl({ id: child.id, title: child.innerText });
-
+          headerTocTuple.push({ header: child, tocLink: el });
           tocContainer.appendChild(el);
         }
-        recurse({ elem: child, tocContainer, search });
+        recurse({ elem: child, tocContainer, search }, headerTocTuple);
       }
+    }
+
+    function highlightOnScroll(headerTocTuple) {
+      for (const item of headerTocTuple) {
+        let isFirst = true;
+        var observer = new IntersectionObserver(
+          function (entries) {
+            if (isFirst) {
+              isFirst = false;
+            } else {
+              highlightActive(item.tocLink);
+              console.log(entries, item);
+            }
+          },
+          { threshold: [1] }
+        );
+
+        observer.observe(item.header);
+      }
+      highlightActive(headerTocTuple[0].tocLink);
     }
 
     function getRandom() {
@@ -128,7 +154,7 @@
 
     function onClickHandler(id, div) {
       const el = document.getElementById(id);
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
 
       highlightActive(div);
     }
