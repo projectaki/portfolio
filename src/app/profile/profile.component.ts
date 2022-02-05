@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { PrimeIcons } from 'primeng/api';
 import { TimeLineItem } from '../shared/timeline/timeline-item';
 
@@ -9,8 +9,12 @@ import { TimeLineItem } from '../shared/timeline/timeline-item';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
-  constructor(private title: Title) {
+  constructor(private title: Title, private meta: Meta) {
     this.title.setTitle('Profile');
+    this.meta.addTags([
+      { name: 'description', content: "Profile page for Akos's portfolio!" },
+      { name: 'keywords', content: 'Profile, Akos, Madarasz' },
+    ]);
   }
 
   workItems: TimeLineItem[] = [

@@ -1,1 +1,3 @@
-<p>blog works!</p>
+<div *ngFor="let post of blogPosts">
+  <a href="blogs/{{ post.id }}/">{{ post.title }}</a>
+</div>
