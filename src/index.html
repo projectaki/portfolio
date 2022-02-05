@@ -103,7 +103,7 @@
         headerTocTuple
       );
 
-      //highlightOnScroll(headerTocTuple);
+      highlightOnScrollClosure(headerTocTuple);
     }
 
     function recurse({ elem, tocContainer, search }, headerTocTuple) {
@@ -118,24 +118,45 @@
       }
     }
 
-    function highlightOnScroll(headerTocTuple) {
-      for (const item of headerTocTuple) {
-        let isFirst = true;
-        var observer = new IntersectionObserver(
-          function (entries) {
+    function highlightOnScrollClosure(headerTocTuple) {
+      let prevOffset = 0;
+
+      const func = headerTocTuple => {
+        for (const [idx, item] of headerTocTuple.entries()) {
+          let isFirst = true;
+          var observer = new IntersectionObserver(function (entries) {
+            const [entry] = entries;
             if (isFirst) {
               isFirst = false;
             } else {
-              highlightActive(item.tocLink);
-              console.log(entries, item);
+              // Enter viewport
+              if (entry.isIntersecting) {
+                const isScrollUp = entry.target.offsetTop < prevOffset;
+                if (isScrollUp) {
+                  highlightActive(item.tocLink);
+                  prevOffset = entry.target.offsetTop;
+                }
+              }
+              // Leave viewport
+              else {
+                if (idx !== headerTocTuple.length - 1) {
+                  const nextTuple = headerTocTuple[idx + 1];
+                  const isScrollDown = nextTuple.header.offsetTop > prevOffset;
+                  if (isScrollDown) {
+                    highlightActive(headerTocTuple[idx + 1].tocLink);
+                    prevOffset = nextTuple.header.offsetTop;
+                  }
+                }
+              }
             }
-          },
-          { threshold: [1] }
-        );
+          });
 
-        observer.observe(item.header);
-      }
-      highlightActive(headerTocTuple[0].tocLink);
+          observer.observe(item.header);
+        }
+        highlightActive(headerTocTuple[0].tocLink);
+      };
+
+      return func(headerTocTuple);
     }
 
     function getRandom() {
