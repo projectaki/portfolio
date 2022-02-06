@@ -123,16 +123,18 @@
       const func = headerTocTuple => {
         for (const [idx, item] of headerTocTuple.entries()) {
           let isFirst = true;
-          var observer = new IntersectionObserver(
-            function (entries) {
-              const [entry] = entries;
-              if (isFirst) {
-                isFirst = false;
-              } else {
+          var observer = new IntersectionObserver(function (entries) {
+            const [entry] = entries;
+            if (isFirst) {
+              isFirst = false;
+            } else {
+              if (!isMouseEvent) {
+                console.log('entry', entry);
                 // Enter viewport
                 if (entry.isIntersecting) {
-                  const isScrollUp = entry.boundingClientRect.top < 60;
+                  const isScrollUp = entry.boundingClientRect.top < window.innerHeight / 2;
                   if (isScrollUp) {
+                    console.log(item.tocLink);
                     highlightActive(item.tocLink);
                   }
                 }
@@ -140,16 +142,17 @@
                 else {
                   if (idx !== headerTocTuple.length - 1) {
                     const nextTuple = headerTocTuple[idx + 1];
-                    const isScrollDown = entry.boundingClientRect.top < 60;
+                    const isScrollDown = entry.boundingClientRect.top < window.innerHeight / 2;
                     if (isScrollDown) {
+                      console.log(headerTocTuple[idx + 1].tocLink);
+
                       highlightActive(headerTocTuple[idx + 1].tocLink);
                     }
                   }
                 }
               }
-            },
-            { root: document.querySelector('div .example-container') }
-          );
+            }
+          });
 
           observer.observe(item.header);
         }
@@ -172,12 +175,13 @@
       div.classList.add('toc-link');
       return div;
     }
-
+    let isMouseEvent = false;
     function onClickHandler(id, div) {
+      isMouseEvent = true;
       const el = document.getElementById(id);
       el.scrollIntoView({ behavior: 'auto', block: 'start' });
-
       highlightActive(div);
+      setTimeout(() => (isMouseEvent = false), 500);
     }
 
     function highlightActive(el) {
