@@ -4,6 +4,9 @@
     "title": "Authentication",
     "filename": "authentication.md",
     "description": "Article about a clean Authentication and Authorization architecture.",
-    "keywords": "authentication, authorization, seperation of concerns, clean, architecture"
+    "keywords": "authentication, authorization, seperation of concerns, clean, architecture",
+    "date": "2022/02/06",
+    "imgUrl": "assets/auth_cover.png",
+    "tag": "Technology"
   }
 ]
