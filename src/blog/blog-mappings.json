@@ -5,12 +5,5 @@
     "filename": "authentication.md",
     "description": "Article about a clean Authentication and Authorization architecture.",
     "keywords": "authentication, authorization, seperation of concerns, clean, architecture"
-  },
-  {
-    "id": "2",
-    "title": "Testing",
-    "filename": "test.md",
-    "description": "Test.",
-    "keywords": "test"
   }
 ]

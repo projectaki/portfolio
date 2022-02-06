@@ -26,7 +26,8 @@ $navbar-height: 60px;
 }
 
 .page-content {
-  width: calc(100% - $sidenav-width);
+  width: calc(100%);
+  min-height: calc(100vh - $navbar-height);
 }
 
 .sidenav-mobile {

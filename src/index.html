@@ -28,13 +28,11 @@
     const tocContainer = document.querySelector('#toc-container');
     const pageContent = document.querySelector('app-toc .page-content');
 
-    if (sidenav && sidenavToggle && themeToggle && links && tocContainer && pageContent) {
-      setInitialTheme();
-      setPreStyle();
-      setCurrentRouterHighlight();
-      createTOCFromHeadings();
-      regEventListeners();
-    }
+    setInitialTheme();
+    setPreStyle();
+    setCurrentRouterHighlight();
+    createTOCFromHeadings();
+    regEventListeners();
 
     function regEventListeners() {
       links.forEach(link => {
@@ -63,18 +61,18 @@
 
     function setInitialTheme() {
       const isDark = JSON.parse(localStorage.getItem('darkMode'));
-      if (isDark === null || isDark) {
-        localStorage.setItem('darkMode', true);
-        setThemeIcon(true);
-      } else {
+      if (isDark === null || !isDark) {
         localStorage.setItem('darkMode', false);
         setThemeIcon(false);
         document.body.classList.toggle('lightMode');
+      } else {
+        localStorage.setItem('darkMode', true);
+        setThemeIcon(true);
       }
     }
 
     function setThemeIcon(isDark) {
-      themeToggle.innerHTML = isDark ? '🌞' : '🌚';
+      themeToggle.innerHTML = isDark ? '🌝' : '🌚';
     }
 
     function setPreStyle() {

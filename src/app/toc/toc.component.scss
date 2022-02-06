@@ -8,15 +8,15 @@ $toc-width: 15em;
   border-left: 1px solid grey;
   position: fixed;
   top: 60px;
-  right: 16px;
+  right: 8px;
   width: $toc-width;
 }
 
 .page-content {
   margin-right: $toc-width;
   padding-top: 3em;
-  padding-left: 4em;
-  padding-right: 4em;
+  padding-left: 16em;
+  padding-right: 16em;
   padding-bottom: 3em;
 }
 
