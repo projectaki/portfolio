@@ -4,6 +4,7 @@ import { BlogComponent } from './blog.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { RouterModule, Routes } from '@angular/router';
 import { PostComponent } from './post/post.component';
+import { BlogCardComponent } from './blog-card/blog-card.component';
 
 const routes: Routes = [
   { path: '', component: BlogComponent },
@@ -11,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [BlogComponent, PostComponent],
+  declarations: [BlogComponent, PostComponent, BlogCardComponent],
   imports: [CommonModule, RouterModule.forChild(routes), MarkdownModule.forChild()],
 })
 export class BlogModule {}

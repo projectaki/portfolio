@@ -1,11 +1,9 @@
-.blog-post {
-  width: 50%;
-  border-radius: 30px;
-  background-color: var(--inline-code-bg);
-  color: var(--font-color);
-  border: 1px solid var(--inline-code-border);
-  padding: 2em;
-  margin-bottom: 2em;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin-block: 2rem;
+  gap: 2rem;
 }
 
 a {
