@@ -43,7 +43,7 @@
     "@scullyio/init": "^2.1.9",
     "@scullyio/ng-lib": "^2.1.0",
     "@scullyio/scully": "^2.1.0",
-    "@scullyio/scully-plugin-puppeteer": "^2.1.0",
+    "@scullyio/scully-plugin-puppeteer": "^2.1.11",
     "ngx-markdown": "^13.1.0",
     "npm": "^8.4.1",
     "primeicons": "^5.0.0",
