@@ -1,6 +1,8 @@
-<h1>Blog posts</h1>
-<a *ngFor="let post of blogPosts" href="blogs/{{ post.id }}/"
-  ><div class="blog-post">
-    <h2>{{ post.title }}</h2>
-  </div>
-</a>
+<div class="markdown">
+  <h1>Blog posts</h1>
+  <a *ngFor="let post of blogPosts" href="blogs/{{ post.id }}/"
+    ><div class="blog-post">
+      <h2>{{ post.title }}</h2>
+    </div>
+  </a>
+</div>
