@@ -8,10 +8,12 @@
 </div> -->
 <div class="markdown">
   <h1>Blog posts</h1>
-  <div class="container">
-    <app-blog-card></app-blog-card>
-    <app-blog-card></app-blog-card>
-    <app-blog-card></app-blog-card>
-    <app-blog-card></app-blog-card>
-  </div>
+  <a *ngFor="let post of blogPosts" href="blogs/{{ post.id }}/">
+    <app-blog-card
+      [title]="post.title"
+      [description]="post.description"
+      [date]="post.date"
+      [imgUrl]="post.imgUrl"
+      [tag]="post.tag"></app-blog-card>
+  </a>
 </div>

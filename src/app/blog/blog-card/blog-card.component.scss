@@ -9,10 +9,22 @@ img {
   flex-direction: column;
   width: 20em;
   overflow: hidden;
-  box-shadow: 0 0.1rem 1rem rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0.1rem 1rem var(--box-shadow);
   border-radius: 1em;
   background: var(--bg-color);
   background: linear-gradient(to right, var(--bg-color), var(--bg-color));
+}
+
+.card:hover {
+  .card__body,
+  .card__footer {
+    background-color: var(--font-color);
+    color: var(--bg-color);
+  }
+
+  .card__header {
+    opacity: 0.1;
+  }
 }
 
 @media screen and (max-width: 360px) {

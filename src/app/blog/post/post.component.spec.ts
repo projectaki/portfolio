@@ -24,6 +24,9 @@ describe('PostComponent', () => {
       id: '',
       keywords: '',
       title: '',
+      date: '',
+      imgUrl: '',
+      tag: '',
     };
   });
 

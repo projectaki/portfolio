@@ -4,4 +4,7 @@ export interface Post {
   filename: string;
   description: string;
   keywords: string;
+  date: string;
+  imgUrl: string;
+  tag: string;
 }

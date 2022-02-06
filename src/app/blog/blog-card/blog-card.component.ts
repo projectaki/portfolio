@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-blog-card',
@@ -6,8 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./blog-card.component.scss'],
 })
 export class BlogCardComponent {
-  imgUrl!: string;
-  title!: string;
-  description!: string;
-  date!: string;
+  @Input() imgUrl!: string;
+  @Input() title!: string;
+  @Input() description!: string;
+  @Input() date!: string;
+  @Input() tag!: string;
 }
