@@ -104,7 +104,7 @@
         headerTocTuple
       );
 
-      //highlightOnScrollClosure(headerTocTuple);
+      highlightOnScrollClosure(headerTocTuple);
     }
 
     function recurse({ elem, tocContainer, search }, headerTocTuple) {
@@ -120,37 +120,36 @@
     }
 
     function highlightOnScrollClosure(headerTocTuple) {
-      let prevOffset = 0;
-
       const func = headerTocTuple => {
         for (const [idx, item] of headerTocTuple.entries()) {
           let isFirst = true;
-          var observer = new IntersectionObserver(function (entries) {
-            const [entry] = entries;
-            if (isFirst) {
-              isFirst = false;
-            } else {
-              // Enter viewport
-              if (entry.isIntersecting) {
-                const isScrollUp = entry.target.offsetTop < prevOffset;
-                if (isScrollUp) {
-                  highlightActive(item.tocLink);
-                  prevOffset = entry.target.offsetTop;
+          var observer = new IntersectionObserver(
+            function (entries) {
+              const [entry] = entries;
+              if (isFirst) {
+                isFirst = false;
+              } else {
+                // Enter viewport
+                if (entry.isIntersecting) {
+                  const isScrollUp = entry.boundingClientRect.top < 60;
+                  if (isScrollUp) {
+                    highlightActive(item.tocLink);
+                  }
                 }
-              }
-              // Leave viewport
-              else {
-                if (idx !== headerTocTuple.length - 1) {
-                  const nextTuple = headerTocTuple[idx + 1];
-                  const isScrollDown = nextTuple.header.offsetTop > prevOffset;
-                  if (isScrollDown) {
-                    highlightActive(headerTocTuple[idx + 1].tocLink);
-                    prevOffset = nextTuple.header.offsetTop;
+                // Leave viewport
+                else {
+                  if (idx !== headerTocTuple.length - 1) {
+                    const nextTuple = headerTocTuple[idx + 1];
+                    const isScrollDown = entry.boundingClientRect.top < 60;
+                    if (isScrollDown) {
+                      highlightActive(headerTocTuple[idx + 1].tocLink);
+                    }
                   }
                 }
               }
-            }
-          });
+            },
+            { root: document.querySelector('div .example-container') }
+          );
 
           observer.observe(item.header);
         }
