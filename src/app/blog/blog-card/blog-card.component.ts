@@ -11,4 +11,5 @@ export class BlogCardComponent {
   @Input() description!: string;
   @Input() date!: string;
   @Input() tag!: string;
+  @Input() id!: string;
 }

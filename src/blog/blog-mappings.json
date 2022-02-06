@@ -1,12 +1,12 @@
 [
   {
     "id": "1",
-    "title": "Authentication",
+    "title": "Clean Authentication architecture",
     "filename": "authentication.md",
-    "description": "Article about a clean Authentication and Authorization architecture.",
-    "keywords": "authentication, authorization, seperation of concerns, clean, architecture",
+    "description": "Designing a clean authentication architecture using OpenId Connect protocol.",
+    "keywords": "authentication, authorization, seperation of concerns, clean, architecture, openid connect",
     "date": "2022/02/06",
     "imgUrl": "assets/auth_cover.png",
-    "tag": "Technology"
+    "tag": "Security"
   }
 ]

@@ -129,12 +129,10 @@
               isFirst = false;
             } else {
               if (!isMouseEvent) {
-                console.log('entry', entry);
                 // Enter viewport
                 if (entry.isIntersecting) {
                   const isScrollUp = entry.boundingClientRect.top < window.innerHeight / 2;
                   if (isScrollUp) {
-                    console.log(item.tocLink);
                     highlightActive(item.tocLink);
                   }
                 }
@@ -144,8 +142,6 @@
                     const nextTuple = headerTocTuple[idx + 1];
                     const isScrollDown = entry.boundingClientRect.top < window.innerHeight / 2;
                     if (isScrollDown) {
-                      console.log(headerTocTuple[idx + 1].tocLink);
-
                       highlightActive(headerTocTuple[idx + 1].tocLink);
                     }
                   }

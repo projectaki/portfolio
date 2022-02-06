@@ -1,17 +1,19 @@
 <div class="card">
-  <div class="card__header">
-    <img src="{{ imgUrl }}" alt="{{ title }}" class="card__image" width="600" />
-  </div>
-  <div class="card-content">
-    <div class="card__body">
-      <span class="tag tag-blue">{{ tag }}</span>
-      <h4>{{ title }}</h4>
-      <p>
-        {{ description }}
-      </p>
+  <a href="blogs/{{ id }}/" target="_blank">
+    <div class="card__header">
+      <img src="{{ imgUrl }}" alt="{{ title }}" class="card__image" width="600" />
     </div>
-    <div class="card__footer">
-      <p>{{ date }}</p>
+    <div class="card-content">
+      <div class="card__body">
+        <span class="tag tag-blue">{{ tag }}</span>
+        <h4>{{ title }}</h4>
+        <p>
+          {{ description }}
+        </p>
+      </div>
+      <div class="card__footer">
+        <p>{{ date }}</p>
+      </div>
     </div>
-  </div>
+  </a>
 </div>
