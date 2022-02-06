@@ -4,7 +4,7 @@ I ❤️ programming, and I made this portfolio to keep track of my progress.
 I plan to keep it up to date, and also create a blog where I will write about  
 projects or implementations that I have done.
 
-## Main stack:
+## Main stack
 
 ![Angular](https://img.shields.io/badge/-Angular-dd1b16?logo=angular&logoColor=black&style=flat)
 ![Typescript](https://img.shields.io/badge/-typescript-blue?logo=typescript&logoColor=white&style=flat)

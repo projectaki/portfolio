@@ -14,12 +14,12 @@ $navbar-height: 60px;
 
 .main-content {
   display: flex;
-  min-height: 100%;
+  min-height: calc(100% - $navbar-height);
 }
 
 .sidenav {
   width: $sidenav-width;
-  height: 100vh;
+  height: calc(100vh - $navbar-height);
   top: 0;
   position: sticky;
   border-right: 1px solid grey;

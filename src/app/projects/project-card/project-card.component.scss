@@ -1,9 +1,32 @@
-mat-card-title {
-  font-weight: 700;
+.project-card {
+  width: 220px;
+  height: 220px;
+  padding: 3em;
+  border-radius: 30px;
+  background-color: var(--inline-code-bg);
+  border: 1px solid var(--inline-code-border);
+  overflow-y: hidden;
 }
 
-.example-card {
-  max-width: 350px;
-  border: 1px solid #06c258;
-  border-radius: 15px;
+.project-card:hover {
+  background-color: rgb(6, 194, 88);
+  color: var(--font-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 360px) {
+  .project-card {
+    padding: 2em;
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .hide-on-small {
+    display: none;
+  }
 }

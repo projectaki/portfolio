@@ -1,21 +1,12 @@
-<mat-card class="example-card background">
-  <mat-card-title>{{ project.title }}</mat-card-title>
-  <mat-divider inset></mat-divider>
-  <mat-card-content>
-    <br />
-    <p>{{ project.description }}</p>
-    <br />
+<a href="{{ project.link }}" target="_blank" rel="noopener noreferrer">
+  <div class="project-card">
+    <h1>{{ project.title }}</h1>
+    <p class="hide-on-small">{{ project.description }}</p>
     <p>Technologies used:</p>
     <div fxLayout="row wrap">
       <div *ngFor="let tech of project.technologies">
         <img src="{{ tech.url }}" alt="{{ tech.name + ' badge' }}" />&nbsp;&nbsp;
       </div>
     </div>
-  </mat-card-content>
-  <mat-divider inset></mat-divider>
-  <mat-card-actions>
-    <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer"
-      ><button mat-raised-button color="primary">Link</button></a
-    >
-  </mat-card-actions>
-</mat-card>
+  </div>
+</a>

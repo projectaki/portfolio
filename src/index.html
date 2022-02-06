@@ -28,11 +28,13 @@
     const tocContainer = document.querySelector('#toc-container');
     const pageContent = document.querySelector('app-toc .page-content');
 
-    setInitialTheme();
-    setPreStyle();
-    setCurrentRouterHighlight();
-    createTOCFromHeadings();
-    regEventListeners();
+    if (sidenav && sidenavToggle && themeToggle && links && tocContainer && pageContent) {
+      setInitialTheme();
+      setPreStyle();
+      setCurrentRouterHighlight();
+      createTOCFromHeadings();
+      regEventListeners();
+    }
 
     function regEventListeners() {
       links.forEach(link => {
@@ -92,7 +94,7 @@
 
     function createTOCFromHeadings() {
       if (!pageContent || !tocContainer) return;
-      const search = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+      const search = ['H2', 'H3', 'H4', 'H5', 'H6'];
       const headerTocTuple = [];
 
       recurse(

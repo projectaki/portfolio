@@ -38,6 +38,7 @@ body {
   font-weight: 700;
   font-size: 42px;
   margin-bottom: 30px;
+  line-height: 52px;
 }
 
 .markdown > h2 {
@@ -46,6 +47,7 @@ body {
   font-size: 26px;
   margin-top: 40px;
   margin-bottom: 20px;
+  line-height: 26px;
 }
 
 .markdown > h3 {
@@ -54,6 +56,7 @@ body {
   font-size: 24px;
   margin-top: 30px;
   margin-bottom: 16px;
+  line-height: 26px;
 }
 
 .markdown > p {
@@ -74,6 +77,13 @@ a {
 p > img,
 a > img {
   height: 25px;
+}
+
+@media screen and (max-width: 500px) {
+  p > img,
+  a > img {
+    height: 20px;
+  }
 }
 
 .hidden {
@@ -120,4 +130,23 @@ pre {
 .active {
   color: rgb(6, 194, 88);
   font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
