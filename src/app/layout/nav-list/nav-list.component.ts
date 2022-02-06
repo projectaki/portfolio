@@ -8,12 +8,11 @@ import { ListItem } from 'src/app/shared/list/list-item';
 })
 export class NavListComponent {
   links: ListItem[] = [
-    { name: 'Home', route: '' },
     { name: 'Profile', route: '/profile' },
     { name: 'Projects', route: '/projects' },
+    { name: 'Blog', route: '/blogs' },
     //{ name: 'Skills', route: '/skills' },
     //{ name: 'Contacts', route: '/contacts' },
-    //{ name: 'Blog', route: '/blog' },
   ];
 
   constructor() {}

@@ -1,1 +1,4 @@
-<a *ngFor="let link of links" class="nav-link" href="{{ link.route + '/' }} ">{{ link.name }}</a>
+<div class="nav-link-cont"></div>
+<a *ngFor="let link of links" class="nav-link hover-underline-animation" href="{{ link.route + '/' }} ">{{
+  link.name
+}}</a>

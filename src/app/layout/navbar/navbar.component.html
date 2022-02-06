@@ -1,6 +1,7 @@
 <mat-toolbar class="navbar" fxLayout="row" fxLayoutGap="20px">
   <mat-icon id="sidenav-toggle" class="nav-toggle" appToggleSidenav>view_headline</mat-icon>
   <div class="example-spacer"></div>
-  <div (click)="toggleTheme()" class="theme-toggle" id="toggle">{{ isLight ? '🌞' : '🌚' }}</div>
+  <div class="nav-list"><app-nav-list></app-nav-list></div>
+  <div (click)="toggleTheme()" class="theme-toggle" id="toggle">{{ isLight ? '🌝' : '🌚' }}</div>
   <a class="logo" href="/"><img class="logo" [src]="logoUrl" alt="Home button" /></a>
 </mat-toolbar>

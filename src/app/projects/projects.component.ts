@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { Project } from './project-card/project';
 
 @Component({
@@ -89,7 +89,11 @@ export class ProjectsComponent {
       ],
     },
   ];
-  constructor(private title: Title) {
+  constructor(private title: Title, private meta: Meta) {
     this.title.setTitle('Projects');
+    this.meta.addTags([
+      { name: 'description', content: "Projects page for Akos's portfolio! Project descriptions!" },
+      { name: 'keywords', content: 'Projects, Akos, Madarasz' },
+    ]);
   }
 }

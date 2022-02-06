@@ -280,3 +280,74 @@ Using stored unhandled routes!.----------------------------------   To discover 
 
 
 
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+No configuration for route "/blogs/:blogId" found. Skipping
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"Using stored unhandled routes!.----------------------------------
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+--------------------------------------------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"Using stored unhandled routes!.
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------Using stored unhandled routes!.   To discover new routes in the angular app use "npm run scully -- --scanRoutes"----------------------------------
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"----------------------------------Using stored unhandled routes!.
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------Using stored unhandled routes!.----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------Using stored unhandled routes!.   To discover new routes in the angular app use "npm run scully -- --scanRoutes"----------------------------------
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"----------------------------------Using stored unhandled routes!.
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"Using stored unhandled routes!.----------------------------------
+
+
+
+handleUnknownRoute: "/blogs/", 404:""
+handleUnknownRoute: "/profile/", 404:""
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+Using stored unhandled routes!.----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"----------------------------------
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"----------------------------------Using stored unhandled routes!.
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"Using stored unhandled routes!.----------------------------------
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"----------------------------------Using stored unhandled routes!.
+
+
+
+Using deprecated plugin type:"render"  use "postProcessByHtml" instead
+----------------------------------   To discover new routes in the angular app use "npm run scully -- --scanRoutes"----------------------------------Using stored unhandled routes!.
+
+
+

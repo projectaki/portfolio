@@ -1,0 +1,9 @@
+[
+  {
+    "id": "1",
+    "title": "Authentication",
+    "filename": "authentication.md",
+    "description": "Article about a clean Authentication and Authorization architecture.",
+    "keywords": "authentication, authorization, seperation of concerns, clean, architecture"
+  }
+]

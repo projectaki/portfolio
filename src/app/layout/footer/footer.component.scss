@@ -1,6 +1,13 @@
 mat-toolbar {
   height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  background-color: var(--nav-color);
+  box-shadow: 0 0 20px -15px black;
+  color: var(--font-color);
 }
 
 .centered {
@@ -8,4 +15,15 @@ mat-toolbar {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.socials {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+fa-icon {
+  font-size: 20px;
+  color: var(--font-color);
 }

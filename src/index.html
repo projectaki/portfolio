@@ -5,6 +5,7 @@
     <title>Portfolio</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" content="Akos Madarasz" />
     <meta name="description" content="Akos Madarasz's portfolio website" />
     <meta name="keywords" content="akos, madarasz, akos madarasz, portfolio" />
     <meta name="author" content="Akos Madarasz" />
@@ -60,18 +61,18 @@
 
     function setInitialTheme() {
       const isDark = JSON.parse(localStorage.getItem('darkMode'));
-      if (isDark === null || isDark) {
-        localStorage.setItem('darkMode', true);
-        setThemeIcon(true);
-      } else {
+      if (isDark === null || !isDark) {
         localStorage.setItem('darkMode', false);
         setThemeIcon(false);
         document.body.classList.toggle('lightMode');
+      } else {
+        localStorage.setItem('darkMode', true);
+        setThemeIcon(true);
       }
     }
 
     function setThemeIcon(isDark) {
-      themeToggle.innerHTML = isDark ? '🌞' : '🌚';
+      themeToggle.innerHTML = isDark ? '🌝' : '🌚';
     }
 
     function setPreStyle() {
@@ -91,7 +92,7 @@
 
     function createTOCFromHeadings() {
       if (!pageContent || !tocContainer) return;
-      const search = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+      const search = ['H2', 'H3', 'H4', 'H5', 'H6'];
       const headerTocTuple = [];
 
       recurse(
@@ -103,7 +104,7 @@
         headerTocTuple
       );
 
-      highlightOnScrollClosure(headerTocTuple);
+      //highlightOnScrollClosure(headerTocTuple);
     }
 
     function recurse({ elem, tocContainer, search }, headerTocTuple) {

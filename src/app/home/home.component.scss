@@ -19,28 +19,6 @@
   }
 }
 
-.socials {
-  position: absolute;
-  bottom: 1em;
-  right: 1em;
-}
-
-fa-icon {
-  font-size: 32px;
-}
-
-.linkedin {
-  color: #0072b1;
-}
-
-.github {
-  color: #6e5494;
-}
-
-.logo {
-  width: 12em;
-}
-
 :host ::ng-deep {
   h1 {
     font-family: 'Segoe UI';

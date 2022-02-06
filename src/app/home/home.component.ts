@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +8,12 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 })
 export class HomeComponent {
   logoUrl = 'assets/logo.png';
-  faGithub = faGithub;
-  faLinkedin = faLinkedin;
 
-  constructor(private title: Title) {
-    this.title.setTitle('Home');
+  constructor(private title: Title, private meta: Meta) {
+    this.title.setTitle('Akos Madarasz');
+    this.meta.addTags([
+      { name: 'description', content: "Introduction page for Akos's portfolio!" },
+      { name: 'keywords', content: 'Introduction, Akos, Madarasz' },
+    ]);
   }
 }
