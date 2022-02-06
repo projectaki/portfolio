@@ -2,28 +2,50 @@ mat-toolbar {
   height: 100px;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  background-color: var(--nav-color);
+  background-color: var(--footer-color);
   box-shadow: 0 0 20px -15px black;
   color: var(--font-color);
+  font-size: 16px;
 }
 
 .centered {
+  position: absolute;
+  top: calc(50%);
+  left: 50%;
+  transform: translate(-50%, 50%);
+  font-size: 14px;
+}
+
+.socials {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.socials {
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-}
-
 fa-icon {
   font-size: 20px;
-  color: var(--font-color);
+  color: white;
+}
+
+.icon-cont {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.github {
+  background-color: #ff5733;
+}
+
+.linkedin {
+  background-color: #c70039;
+}
+
+.email {
+  background-color: #900c3f;
 }

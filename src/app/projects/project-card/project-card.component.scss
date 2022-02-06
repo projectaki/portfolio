@@ -3,13 +3,19 @@
   height: 220px;
   padding: 3em;
   border-radius: 30px;
-  background-color: var(--inline-code-bg);
-  border: 1px solid var(--inline-code-border);
+  background-color: var(--bg-color);
+  box-shadow: 0 0.1rem 1rem var(--box-shadow);
+  color: var(--font-color);
   overflow-y: hidden;
 }
 
+h1 {
+  font-family: 'Segoe UI';
+  font-weight: 700;
+}
+
 .project-card:hover {
-  background-color: rgb(6, 194, 88);
+  box-shadow: 0 0 1px 1px rgb(6, 194, 88) inset;
   color: var(--font-color);
 }
 

@@ -1,12 +1,17 @@
 <mat-toolbar>
-  <div class="centered">{{ version }}</div>
   <div class="socials" fxLayout="row" fxLayoutGap="8px">
     <a href="https://github.com/projectaki" target="_blank" rel="noopener noreferrer"
-      ><fa-icon [icon]="faGithub"></fa-icon
+      ><div class="icon-cont github">
+        <fa-icon [icon]="faGithub"></fa-icon></div
     ></a>
     <a href="https://www.linkedin.com/in/akos-madarasz-b430441a1/" target="_blank" rel="noopener noreferrer"
-      ><fa-icon [icon]="faLinkedin"></fa-icon
+      ><div class="icon-cont linkedin">
+        <fa-icon [icon]="faLinkedin"></fa-icon></div
     ></a>
-    <a href="mailto:akiasus@outlook.com"><fa-icon [icon]="faEnvelope"></fa-icon></a>
+    <a href="mailto:akiasus@outlook.com"
+      ><div class="icon-cont email">
+        <fa-icon [icon]="faEnvelope"></fa-icon></div
+    ></a>
   </div>
+  <div class="centered">{{ version }}</div>
 </mat-toolbar>

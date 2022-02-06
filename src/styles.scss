@@ -9,15 +9,17 @@
   --inline-code-bg: rgb(60, 60, 60);
   --inline-code-border: rgb(90, 90, 90);
   --box-shadow: rgba(255, 255, 255, 0.1);
+  --footer-color: #37404a;
 }
 
 .lightMode {
   --bg-color: rgb(255, 255, 255);
   --font-color: #18191a;
-  --nav-color: rgb(255, 255, 255);
+  --nav-color: #f6f7f8;
   --inline-code-bg: #f6f7f8;
   --inline-code-border: rgb(220, 220, 220);
   --box-shadow: rgba(0, 0, 0, 0.1);
+  --footer-color: #f6f7f8;
 }
 
 * {
