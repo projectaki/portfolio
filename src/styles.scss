@@ -8,6 +8,7 @@
   --nav-color: rgb(45, 45, 45);
   --inline-code-bg: rgb(60, 60, 60);
   --inline-code-border: rgb(90, 90, 90);
+  --box-shadow: rgba(255, 255, 255, 0.1);
 }
 
 .lightMode {
@@ -16,6 +17,7 @@
   --nav-color: rgb(255, 255, 255);
   --inline-code-bg: #f6f7f8;
   --inline-code-border: rgb(220, 220, 220);
+  --box-shadow: rgba(0, 0, 0, 0.1);
 }
 
 * {
