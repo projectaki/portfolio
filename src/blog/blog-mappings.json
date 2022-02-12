@@ -8,5 +8,15 @@
     "date": "2022/02/06",
     "imgUrl": "assets/auth_cover.png",
     "tag": "Security"
+  },
+  {
+    "id": "2",
+    "title": "Smart initialization of a new code project",
+    "filename": "project-setup.md",
+    "description": "Important steps to consider before initializing a new project.",
+    "keywords": "project, initializing, tools, linter, formatter, CI/CD, testing, automation",
+    "date": "2022/02/12",
+    "imgUrl": "assets/screwdriver.png",
+    "tag": "Development"
   }
 ]

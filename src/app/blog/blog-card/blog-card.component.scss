@@ -2,18 +2,25 @@ img {
   max-width: 100%;
   display: block;
   object-fit: cover;
+  height: 200px;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   width: 20em;
+  height: 500px;
   overflow: hidden;
   box-shadow: 0 0.1rem 1rem var(--box-shadow);
   border-radius: 1em;
   background: var(--bg-color);
   background: linear-gradient(to right, var(--bg-color), var(--bg-color));
   margin: 0;
+}
+
+.card-content {
+  overflow-y: auto;
+  height: 300px;
 }
 
 a {

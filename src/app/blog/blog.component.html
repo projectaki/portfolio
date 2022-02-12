@@ -8,12 +8,14 @@
 </div> -->
 <div class="markdown">
   <h1>Blog posts</h1>
-  <app-blog-card
-    *ngFor="let post of blogPosts"
-    [title]="post.title"
-    [description]="post.description"
-    [date]="post.date"
-    [imgUrl]="post.imgUrl"
-    [tag]="post.tag"
-    [id]="post.id"></app-blog-card>
+  <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="20px grid">
+    <app-blog-card
+      *ngFor="let post of blogPosts"
+      [title]="post.title"
+      [description]="post.description"
+      [date]="post.date"
+      [imgUrl]="post.imgUrl"
+      [tag]="post.tag"
+      [id]="post.id"></app-blog-card>
+  </div>
 </div>
