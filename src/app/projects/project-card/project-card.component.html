@@ -1,11 +1,13 @@
 <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer">
   <div class="project-card">
-    <h1>{{ project.title }}</h1>
-    <p class="hide-on-small">{{ project.description }}</p>
-    <p>Technologies used:</p>
-    <div fxLayout="row wrap">
-      <div *ngFor="let tech of project.technologies">
-        <img src="{{ tech.url }}" alt="{{ tech.name + ' badge' }}" />&nbsp;&nbsp;
+    <div class="card-content">
+      <h1>{{ project.title }}</h1>
+      <p class="hide-on-small">{{ project.description }}</p>
+      <p>Technologies used:</p>
+      <div fxLayout="row wrap">
+        <div *ngFor="let tech of project.technologies">
+          <img src="{{ tech.url }}" alt="{{ tech.name + ' badge' }}" />&nbsp;&nbsp;
+        </div>
       </div>
     </div>
   </div>

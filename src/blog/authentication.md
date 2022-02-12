@@ -1,4 +1,4 @@
-# Clean Authentication and Authorization architecture
+# Clean Authentication and Authorization architecture 🔑
 
 ---
 

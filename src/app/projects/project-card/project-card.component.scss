@@ -9,6 +9,11 @@
   overflow-y: hidden;
 }
 
+.card-content {
+  overflow-y: auto;
+  height: 100%;
+}
+
 h1 {
   font-family: 'Segoe UI';
   font-weight: 700;
