@@ -1,6 +1,6 @@
 # Project initiliazation with must-have tools 🪛
 
-In this example I am going to be talking about initializing a coding project or framework, and it is true for all kinds of technologies.
+In this example I am going to be talking about initializing a coding project or framework, with some helpful tools.
 
 ## Basic initializing
 
@@ -116,8 +116,7 @@ The following example is a prettier config.
 
 ### Pre-commit hook
 
-The following snippet is a pre-commit hook using Husky. The important part is the `npx lint-staged` command. This is a script from the
-`package.json` file. This can be any user defined script, which will run as a pre-commit event.
+The following snippet is a pre-commit hook using Husky. The important part is the `npx lint-staged` command. This is a command to run linting on staged files, but it can be a script from the `package.json` file. This can be any user defined script, which will run as a pre-commit event.
 
 ```bash
 #!/bin/sh

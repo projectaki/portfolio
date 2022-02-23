@@ -11,12 +11,22 @@
   },
   {
     "id": "2",
-    "title": "Smart initialization of a new code project",
+    "title": "Project initiliazation with must-have tools",
     "filename": "project-setup.md",
     "description": "Important steps to consider before initializing a new project.",
     "keywords": "project, initializing, tools, linter, formatter, CI/CD, testing, automation",
     "date": "2022/02/12",
     "imgUrl": "assets/screwdriver.png",
     "tag": "Development"
+  },
+  {
+    "id": "3",
+    "title": " Authorization on the server side",
+    "filename": "authorization.md",
+    "description": "Authorization strategies on the server side.",
+    "keywords": "authorization, authentication, security, policy, role, permissions, resource, server",
+    "date": "2022/02/21",
+    "imgUrl": "assets/auth-key.png",
+    "tag": "Security"
   }
 ]
