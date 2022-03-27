@@ -1,0 +1,785 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Scully 0.0.0">
+    <meta charset="utf-8">
+    <title> Authorization on the server side</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Akos Madarasz">
+    <meta name="description" content="Akos Madarasz's portfolio website">
+    <meta name="keywords" content="akos, madarasz, akos madarasz, portfolio">
+    <meta name="author" content="Akos Madarasz">
+    <style type="text/css">svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.225em;
+}
+.svg-inline--fa.fa-w-1 {
+  width: 0.0625em;
+}
+.svg-inline--fa.fa-w-2 {
+  width: 0.125em;
+}
+.svg-inline--fa.fa-w-3 {
+  width: 0.1875em;
+}
+.svg-inline--fa.fa-w-4 {
+  width: 0.25em;
+}
+.svg-inline--fa.fa-w-5 {
+  width: 0.3125em;
+}
+.svg-inline--fa.fa-w-6 {
+  width: 0.375em;
+}
+.svg-inline--fa.fa-w-7 {
+  width: 0.4375em;
+}
+.svg-inline--fa.fa-w-8 {
+  width: 0.5em;
+}
+.svg-inline--fa.fa-w-9 {
+  width: 0.5625em;
+}
+.svg-inline--fa.fa-w-10 {
+  width: 0.625em;
+}
+.svg-inline--fa.fa-w-11 {
+  width: 0.6875em;
+}
+.svg-inline--fa.fa-w-12 {
+  width: 0.75em;
+}
+.svg-inline--fa.fa-w-13 {
+  width: 0.8125em;
+}
+.svg-inline--fa.fa-w-14 {
+  width: 0.875em;
+}
+.svg-inline--fa.fa-w-15 {
+  width: 0.9375em;
+}
+.svg-inline--fa.fa-w-16 {
+  width: 1em;
+}
+.svg-inline--fa.fa-w-17 {
+  width: 1.0625em;
+}
+.svg-inline--fa.fa-w-18 {
+  width: 1.125em;
+}
+.svg-inline--fa.fa-w-19 {
+  width: 1.1875em;
+}
+.svg-inline--fa.fa-w-20 {
+  width: 1.25em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: 0.3em;
+  width: auto;
+}
+.svg-inline--fa.fa-border {
+  height: 1.5em;
+}
+.svg-inline--fa.fa-li {
+  width: 2em;
+}
+.svg-inline--fa.fa-fw {
+  width: 1.25em;
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: #ff253a;
+  border-radius: 1em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  height: 1.5em;
+  line-height: 1;
+  max-width: 5em;
+  min-width: 1.5em;
+  overflow: hidden;
+  padding: 0.25em;
+  right: 0;
+  text-overflow: ellipsis;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: 0;
+  right: 0;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: auto;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  right: 0;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: 0;
+  right: auto;
+  top: 0;
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -0.0667em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+}
+
+.fa-border {
+  border: solid 0.08em #eee;
+  border-radius: 0.1em;
+  padding: 0.2em 0.25em 0.15em;
+}
+
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left,
+.fas.fa-pull-left,
+.far.fa-pull-left,
+.fal.fa-pull-left,
+.fab.fa-pull-left {
+  margin-right: 0.3em;
+}
+.fa.fa-pull-right,
+.fas.fa-pull-right,
+.far.fa-pull-right,
+.fal.fa-pull-right,
+.fab.fa-pull-right {
+  margin-left: 0.3em;
+}
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+          animation: fa-spin 2s infinite linear;
+}
+
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+          animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
+}
+
+.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
+}
+
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical,
+:root .fa-flip-both {
+  -webkit-filter: none;
+          filter: none;
+}
+
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: 0.4;
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: 1;
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse {
+  color: #fff;
+}</style><link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <style type="text/css">@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}</style>
+    <style type="text/css">@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/materialicons/v126/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');}.material-icons{font-family:'Material Icons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;}</style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <style type="text/css">@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}</style>
+    <style type="text/css">@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/materialicons/v126/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');}.material-icons{font-family:'Material Icons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;}</style>
+  <style>@import"https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,700;1,400&display=swap";@import"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap";.mat-typography{font:400 14px/20px Roboto,Helvetica Neue,sans-serif;letter-spacing:normal}:root{--bg-color:#18191a;--font-color:rgb(255, 255, 255);--nav-color:rgb(45, 45, 45);--inline-code-bg:rgb(60, 60, 60);--inline-code-border:rgb(90, 90, 90);--box-shadow:rgba(255, 255, 255, .1);--footer-color:#37404a}*{font-family:Segoe UI;word-break:break-word}html,body{height:100%;margin:0;padding:0;font-family:Segoe UI,Open Sans,sans-serif;background-color:var(--bg-color);color:var(--font-color);overflow:hidden}</style><link rel="stylesheet" href="styles.cf63c9d973f1fc81.css" media="all" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.cf63c9d973f1fc81.css"></noscript><style>.example-container[_ngcontent-lcf-c28]{position:absolute;top:60px;bottom:0;left:0;right:0;height:calc(100% - 60px);overflow-y:auto;width:100%}.main-content[_ngcontent-lcf-c28]{display:flex;min-height:calc(100% - 60px)}.sidenav[_ngcontent-lcf-c28]{width:20em;height:calc(100vh - 60px);top:0;position:sticky;border-right:1px solid grey}.page-content[_ngcontent-lcf-c28]{width:100%;min-height:calc(100vh - 60px)}.sidenav-mobile[_ngcontent-lcf-c28]{position:absolute;top:60px;width:100%;height:100%;background-color:var(--bg-color)}@media screen and (max-width: 850px){.sidenav[_ngcontent-lcf-c28]{display:none}.page-content[_ngcontent-lcf-c28]{margin-left:0;width:100%}}</style><style>mat-toolbar[_ngcontent-lcf-c23]{height:60px;width:100%;position:fixed;z-index:9999}.navbar[_ngcontent-lcf-c23]{background-color:var(--nav-color);box-shadow:0 0 20px -15px #000}.logo[_ngcontent-lcf-c23]{width:38px;height:32px}.logo[_ngcontent-lcf-c23]:hover{cursor:pointer;opacity:.8}mat-icon[_ngcontent-lcf-c23]{cursor:pointer}.theme-toggle[_ngcontent-lcf-c23]{cursor:pointer;font-size:28px}.example-spacer[_ngcontent-lcf-c23]{flex:1 1 auto}.nav-toggle[_ngcontent-lcf-c23]{display:none;color:#06c258}@media screen and (max-width: 850px){.nav-toggle[_ngcontent-lcf-c23]{display:block}.nav-list[_ngcontent-lcf-c23]{display:none}}</style><style>mat-toolbar[_ngcontent-lcf-c27]{height:100px;width:100%;display:flex;position:relative;background-color:var(--footer-color);box-shadow:0 0 20px -15px #000;color:var(--font-color);font-size:16px}.centered[_ngcontent-lcf-c27]{position:absolute;top:50%;left:50%;transform:translate(-50%,50%);font-size:14px}.socials[_ngcontent-lcf-c27]{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}fa-icon[_ngcontent-lcf-c27]{font-size:20px;color:#fff}.icon-cont[_ngcontent-lcf-c27]{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center}.github[_ngcontent-lcf-c27]{background-color:#ff5733}.linkedin[_ngcontent-lcf-c27]{background-color:#c70039}.email[_ngcontent-lcf-c27]{background-color:#900c3f}</style><style>.nav-link-cont[_ngcontent-lcf-c22]{display:flex}.nav-link[_ngcontent-lcf-c22]{font-size:12px;text-decoration:none;padding:1em;font-family:Montserrat;font-weight:700;text-transform:uppercase;color:var(--font-color)}.hover-underline-animation[_ngcontent-lcf-c22]{display:inline-block;position:relative;color:var(--font-color)}.hover-underline-animation[_ngcontent-lcf-c22]:after{content:"";position:absolute;width:100%;transform:scaleX(0);height:2px;bottom:0;left:0;background-color:#06c258;transform-origin:bottom right;transition:transform .25s ease-out}.hover-underline-animation[_ngcontent-lcf-c22]:hover:after{transform:scaleX(1);transform-origin:bottom left}</style><style>.cdk-high-contrast-active .mat-toolbar{outline:solid 1px}.mat-toolbar-row,.mat-toolbar-single-row{display:flex;box-sizing:border-box;padding:0 16px;width:100%;flex-direction:row;align-items:center;white-space:nowrap}.mat-toolbar-multiple-rows{display:flex;box-sizing:border-box;flex-direction:column;width:100%}
+</style><style type="text/css">
+/*
+  @angular/flex-layout - workaround for possible browser quirk with mediaQuery listeners
+  see http://bit.ly/2sd4HMP
+*/
+@media screen and (min-width: 600px), screen and (min-width: 960px), screen and (min-width: 1280px), screen and (min-width: 1920px), screen and (min-width: 1920px) and (max-width: 4999.98px), screen and (max-width: 1919.98px), screen and (min-width: 1280px) and (max-width: 1919.98px), screen and (max-width: 1279.98px), screen and (min-width: 960px) and (max-width: 1279.98px), screen and (max-width: 959.98px), screen and (min-width: 600px) and (max-width: 959.98px), screen and (max-width: 599.98px), screen and (min-width: 0px) and (max-width: 599.98px), print {.fx-query-test{ }}
+</style><style>.mat-icon{-webkit-user-select:none;-moz-user-select:none;user-select:none;background-repeat:no-repeat;display:inline-block;fill:currentColor;height:24px;width:24px}.mat-icon.mat-icon-inline{font-size:inherit;height:inherit;line-height:inherit;width:inherit}[dir=rtl] .mat-icon-rtl-mirror{transform:scale(-1, 1)}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon{display:block}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-icon{margin:auto}
+</style><style>.toc-container[_ngcontent-lcf-c29]{padding:1em}.toc[_ngcontent-lcf-c29]{border-left:1px solid grey;position:fixed;top:60px;right:8px;width:15em}.page-content[_ngcontent-lcf-c29]{margin-right:15em;padding:3em 16em}@media screen and (max-width: 1200px){.toc[_ngcontent-lcf-c29]{display:none}.page-content[_ngcontent-lcf-c29]{margin-right:0;padding-left:2em;padding-right:2em}}</style><style></style><style type="text/css"></style><meta name="description" content="Authorization strategies on the server side."><meta name="keywords" content="authorization, authentication, security, policy, role, permissions, resource, server"><script>window['ScullyIO']='generated';</script><script>window.ScullyIOAngularDisabled = true;</script></head>
+  <body class="mat-typography" scully-version="0.0.0">
+    <app-root ng-version="13.2.1"><router-outlet></router-outlet><app-layout _nghost-lcf-c28=""><app-navbar _ngcontent-lcf-c28="" _nghost-lcf-c23=""><mat-toolbar _ngcontent-lcf-c23="" fxlayout="row" fxlayoutgap="20px" class="mat-toolbar navbar mat-toolbar-single-row" style="flex-direction: row; box-sizing: border-box; display: flex;"><mat-icon _ngcontent-lcf-c23="" role="img" id="sidenav-toggle" apptogglesidenav="" class="mat-icon notranslate nav-toggle material-icons mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" style="margin-right: 20px;">view_headline</mat-icon><div _ngcontent-lcf-c23="" class="example-spacer" style="margin-right: 20px;"></div><div _ngcontent-lcf-c23="" class="nav-list"><app-nav-list _ngcontent-lcf-c23="" _nghost-lcf-c22=""><div _ngcontent-lcf-c22="" class="nav-link-cont"></div><a _ngcontent-lcf-c22="" class="nav-link hover-underline-animation" href="/profile/ ">Profile</a><a _ngcontent-lcf-c22="" class="nav-link hover-underline-animation" href="/projects/ ">Projects</a><a _ngcontent-lcf-c22="" class="nav-link hover-underline-animation" href="/blogs/ ">Blog</a><!----></app-nav-list></div><div _ngcontent-lcf-c23="" id="toggle" class="theme-toggle" style="margin-right: 20px;">🌝</div><a _ngcontent-lcf-c23="" href="/" class="logo"><img _ngcontent-lcf-c23="" alt="Home button" class="logo" src="assets/logo.png"></a></mat-toolbar></app-navbar><div _ngcontent-lcf-c28="" class="example-container"><div _ngcontent-lcf-c28="" class="main-content"><div _ngcontent-lcf-c28="" class="page-content"><router-outlet _ngcontent-lcf-c28=""></router-outlet><app-toc _nghost-lcf-c29=""><div _ngcontent-lcf-c29="" class="page-content"><router-outlet _ngcontent-lcf-c29=""></router-outlet><app-post _nghost-lcf-c33=""><div _ngcontent-lcf-c33="" emoji="" markdown="" class="markdown"><h1>Authorization on the server side</h1>
+<p>This article is going to be about authorization on the server side. It is going to show the different types of authorization strategies
+we can implement. I am going to do a demonstration in a <code>NestJs</code> application (Nodejs/Express), but the authorization should be very similar
+in any backend framework. A prerequisite is to have an access token attached to your backend requests, and a way to extract the information, and make it accessible through the Context. I personally used <code>Passport.js</code> as it is integrated with NestJs, but any other library can be used.</p>
+<h2>Types of authorization</h2>
+<p>Some of the typical types of authorization are: Role-based, Permission-based, Policy-based and Resource based authorization. The best kind of authorization
+is a mix of approaches, as all of them have a different role, while some of them are similar.</p>
+<h3>Role-based authorization</h3>
+<p>Role-based authorization allows the access to API endpoints to be determined by user roles. The role claims are part of the access token. The typical ones are : Admin, Manager and Employee. Roles can be added to endpoint/controller metadata, and evaluated when the user request hits the endpoint. This is a valid approach, but it doesn't scale well, and it doesn't allow for fine-grained access.</p>
+<h3>Permission-based authorization</h3>
+<p>Permission-based authorization is similar to role-based approach. The permissions are also present in the access token. Permissions allow for much more fine-grained access control. Permissions can be made for each resource type. For example a user can have a permission for each CRUD operation: <code>user:create</code>, <code>user:read</code>,<code>user:update</code>,<code>user:delete</code>. The permissions are attached to each endpoints/controllers metadata. Before the endpoint gets hit, the permissions from the access token are compared to the permissions on the endpoints metadata. This is identical to how roles are evaluated.</p>
+<div style="position: relative;"><pre class="language-typescript" tabindex="0"><button class="copyToClipboard ">Copy</button><code class="language-typescript"><span class="token keyword">export</span> <span class="token keyword">enum</span> Permission <span class="token punctuation">{</span>
+  <span class="token constant">USER_CREATE</span> <span class="token operator">=</span> <span class="token string">'user:create'</span><span class="token punctuation">,</span>
+  <span class="token constant">USER_UPDATE</span> <span class="token operator">=</span> <span class="token string">'user:update'</span><span class="token punctuation">,</span>
+  <span class="token constant">USER_DELETE</span> <span class="token operator">=</span> <span class="token string">'user:delete'</span><span class="token punctuation">,</span>
+  <span class="token constant">USER_READ</span> <span class="token operator">=</span> <span class="token string">'user:read'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<p>Roles can be combined with permissions aswell. Each role can have pre-assigned permissions to it. This way users can have roles, with pre-determined permissions, but also the ability to attach extra permissions, to create a more customizable access control.</p>
+<p>Below is an example of required permissions attached to the endpoints metadata.</p>
+<div style="position: relative;"><pre class="language-typescript" tabindex="0"><button class="copyToClipboard ">Copy</button><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Post</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Permissions</span></span><span class="token punctuation">(</span>Permission<span class="token punctuation">.</span><span class="token constant">USER_CREATE</span><span class="token punctuation">)</span>
+    <span class="token keyword">async</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">Body</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> createUserDto<span class="token operator">:</span> CreateUserDto<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>User<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>usersService<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>createUserDto<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<p>Below is an example of the permission guard. This is NestJs specific syntax, but this guard is registered globally, which means that it is called every time an endpoint is hit, unless the endpoint is marked as public. The guard gets the permissions from the user object in the context (which is created from the access token), and the permissions from the endpoint metadata, and determines if the user has access.</p>
+<p>A role based approach would look identical, except instead of permissions there would be roles.</p>
+<div style="position: relative;"><pre class="language-typescript" tabindex="0"><button class="copyToClipboard ">Copy</button><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Injectable</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">PermissionsGuard</span> <span class="token keyword">implements</span> <span class="token class-name">CanActivate</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token keyword">private</span> reflector<span class="token operator">:</span> Reflector<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token function">canActivate</span><span class="token punctuation">(</span>context<span class="token operator">:</span> ExecutionContext<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> requiredPermissions <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>reflector<span class="token punctuation">.</span><span class="token generic-function"><span class="token function">getAllAndOverride</span><span class="token generic class-name"><span class="token operator">&lt;</span>Permission<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token constant">PERMISSIONS_KEY</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+      context<span class="token punctuation">.</span><span class="token function">getHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      context<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>requiredPermissions<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> user <span class="token punctuation">}</span> <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">switchToHttp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> requiredPermissions<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>p <span class="token operator">=&gt;</span> user<span class="token punctuation">.</span>permissions<span class="token operator">?.</span><span class="token function">includes</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<h3>Policy-based authorization</h3>
+<p>Policies are a set of rules. You can combine multiple requirements into a policy, and give it a name. These policies can then be reused. I have seen policies being used in .NET framework, but I did not find a simple policy based approach for nodejs. I will show an example how I created policies in a nodejs environment.</p>
+<p>Below is a policy service, where policies can be registered. These are callback functions which can take an arbitrary amount of inputs, and return a boolean output. The public getter is what we can use to retrieve policies, and provide the inputs. This is also an example of a resource based policy. The policy expects a user and a resource, and returns true if the user id is equal to the resource id. In this case the resource is also a user, therefore users can only retrieve their own user information.</p>
+<p>In case where a policy is not resource-based, it can also be attached to the endpoint metadata, just like for permissions and roles.</p>
+<div style="position: relative;"><pre class="language-typescript" tabindex="0"><button class="copyToClipboard ">Copy</button><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Injectable</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">PolicyService</span> <span class="token punctuation">{</span>
+  <span class="token keyword">private</span> policies<span class="token operator">:</span> Map<span class="token operator">&lt;</span>Policy<span class="token punctuation">,</span> <span class="token punctuation">(</span>u<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> r<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">boolean</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token generic-function"><span class="token function">registerPolicy</span><span class="token generic class-name"><span class="token operator">&lt;</span>User<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>Policy<span class="token punctuation">.</span><span class="token constant">RESOURCE_ID_MATCH</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>u<span class="token punctuation">,</span> r<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> u<span class="token punctuation">.</span>sub <span class="token operator">===</span> r<span class="token punctuation">.</span>_id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">public</span> <span class="token function">get</span><span class="token punctuation">(</span>policy<span class="token operator">:</span> Policy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>policies<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>policy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">private</span> <span class="token generic-function"><span class="token function">registerPolicy</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>policy<span class="token operator">:</span> Policy<span class="token punctuation">,</span> <span class="token function-variable function">action</span><span class="token operator">:</span> <span class="token punctuation">(</span>u<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> r<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">boolean</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>policies<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>policy<span class="token punctuation">,</span> action<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<p>Below is the authorization service.</p>
+<div style="position: relative;"><pre class="language-typescript" tabindex="0"><button class="copyToClipboard ">Copy</button><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Injectable</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AuthService</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token keyword">private</span> policyService<span class="token operator">:</span> PolicyService<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token keyword">public</span> <span class="token generic-function"><span class="token function">authorize</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>user<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span> resource<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">,</span> policy<span class="token operator">:</span> Policy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>policyService<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>policy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>action<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Invalid policy!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> authorizationResult <span class="token operator">=</span> <span class="token function">action</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> resource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>authorizationResult<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ForbiddenException</span><span class="token punctuation">(</span><span class="token string">'Resource is forbidden!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<p>And below is how it is called in the code. The @CurrentUser decorator extracts the user object from the request. The auth service passes a user object, a resource and a policiy name. If the authorize returns false the request returns Unauthorized, otherwise the request continues.</p>
+<div style="position: relative;"><pre class="language-typescript" tabindex="0"><button class="copyToClipboard ">Copy</button><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Get</span></span><span class="token punctuation">(</span><span class="token string">':id'</span><span class="token punctuation">)</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Permissions</span></span><span class="token punctuation">(</span>Permission<span class="token punctuation">.</span><span class="token constant">USER_READ</span><span class="token punctuation">)</span>
+  <span class="token keyword">async</span> <span class="token function">findOne</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">Param</span></span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span> id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token decorator"><span class="token at operator">@</span><span class="token function">CurrentUser</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> user<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>User<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> resource <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>usersService<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>authService<span class="token punctuation">.</span><span class="token generic-function"><span class="token function">authorize</span><span class="token generic class-name"><span class="token operator">&lt;</span>User<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> resource<span class="token punctuation">,</span> Policy<span class="token punctuation">.</span><span class="token constant">RESOURCE_ID_MATCH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> resource<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre></div>
+<h3>Resource-based authorization</h3>
+<p>The previous types of authorization strategies were similar in a sense that they were protecting the access to an endpoint itself. Resource based authorization is a bit different, and should be used in combination with the others.</p>
+<p>Resource-based authorization is preventing access to resources which are not owned by the user requesting access. For example a user could have a product in the database with an id, and a foreign key pointing to the user. The product is owned by the user. If another user tries to access this product, a resource based policy can prevent access. Since the requested resource has to be loaded first, we cannot attach this kind of policy to the endpoint metadata. Instead, we can use an authorization service, and determine access after the resource has been loaded.</p>
+<h1>Conclusion</h1>
+<p>These are the authorization strategies that I've came accross, but I am sure there are more out there.</p>
+<p>Either way, thanks for reading! 😀</p>
+</div></app-post><!----></div><div _ngcontent-lcf-c29="" class="toc"><div _ngcontent-lcf-c29="" id="toc-container" class="toc-container"></div></div></app-toc><!----></div></div><app-footer _ngcontent-lcf-c28="" _nghost-lcf-c27=""><mat-toolbar _ngcontent-lcf-c27="" class="mat-toolbar mat-toolbar-single-row"><div _ngcontent-lcf-c27="" fxlayout="row" fxlayoutgap="8px" class="socials" style="flex-direction: row; box-sizing: border-box; display: flex;"><a _ngcontent-lcf-c27="" href="https://github.com/projectaki" target="_blank" rel="noopener noreferrer" style="margin-right: 8px;"><div _ngcontent-lcf-c27="" class="icon-cont github"><fa-icon _ngcontent-lcf-c27="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></fa-icon></div></a><a _ngcontent-lcf-c27="" href="https://www.linkedin.com/in/akos-madarasz-b430441a1/" target="_blank" rel="noopener noreferrer" style="margin-right: 8px;"><div _ngcontent-lcf-c27="" class="icon-cont linkedin"><fa-icon _ngcontent-lcf-c27="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></fa-icon></div></a><a _ngcontent-lcf-c27="" href="mailto:akiasus@outlook.com"><div _ngcontent-lcf-c27="" class="icon-cont email"><fa-icon _ngcontent-lcf-c27="" class="ng-fa-icon"><svg role="img" aria-hidden="true" focusable="false" data-prefix="far" data-icon="envelope" class="svg-inline--fa fa-envelope fa-w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"></path></svg></fa-icon></div></a></div><div _ngcontent-lcf-c27="" class="centered">v1.1.1</div></mat-toolbar></app-footer></div><div _ngcontent-lcf-c28="" id="sidenav-mobile" class="sidenav-mobile background hidden"><app-nav-list _ngcontent-lcf-c28="" _nghost-lcf-c22=""><div _ngcontent-lcf-c22="" class="nav-link-cont"></div><a _ngcontent-lcf-c22="" class="nav-link hover-underline-animation" href="/profile/ ">Profile</a><a _ngcontent-lcf-c22="" class="nav-link hover-underline-animation" href="/projects/ ">Projects</a><a _ngcontent-lcf-c22="" class="nav-link hover-underline-animation" href="/blogs/ ">Blog</a><!----></app-nav-list></div></app-layout><!----></app-root>
+  
+  <script id="ScullyIO-transfer-state"></script><script>
+    const sidenav = document.querySelector('#sidenav-mobile');
+    const sidenavToggle = document.querySelector('#sidenav-toggle');
+    const themeToggle = document.getElementById('toggle');
+    const links = document.querySelectorAll('.nav-link');
+    const tocContainer = document.querySelector('#toc-container');
+    const pageContent = document.querySelector('app-toc .page-content');
+
+    setInitialTheme();
+    setPreStyle();
+    setCurrentRouterHighlight();
+    createTOCFromHeadings();
+    regEventListeners();
+
+    function regEventListeners() {
+      links.forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+      sidenavToggle.addEventListener('click', toggle);
+      themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    function closeMenu() {
+      const contains = sidenav.classList.contains('hidden');
+      if (!contains) sidenav.classList.add('hidden');
+    }
+
+    function toggle() {
+      sidenav?.classList.toggle('hidden');
+    }
+
+    function toggleTheme() {
+      const isDark = !document.body.classList.contains('lightMode');
+      document.body.classList.toggle('lightMode');
+
+      localStorage.setItem('darkMode', !isDark);
+      setThemeIcon(!isDark);
+    }
+
+    function setInitialTheme() {
+      const isDark = JSON.parse(localStorage.getItem('darkMode'));
+      if (isDark === null || !isDark) {
+        localStorage.setItem('darkMode', false);
+        setThemeIcon(false);
+        document.body.classList.toggle('lightMode');
+      } else {
+        localStorage.setItem('darkMode', true);
+        setThemeIcon(true);
+      }
+    }
+
+    function setThemeIcon(isDark) {
+      themeToggle.innerHTML = isDark ? '🌝' : '🌚';
+    }
+
+    function setPreStyle() {
+      const pres = document.querySelectorAll('pre');
+      const preConts = [...pres].map(x => x.parentElement);
+
+      preConts.forEach(p => p.classList.add('code-block'));
+    }
+
+    function setCurrentRouterHighlight() {
+      const pathname = window.location.pathname;
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(l => {
+        if (l.pathname === pathname) l.style.backgroundColor = '#06c258';
+      });
+    }
+
+    function createTOCFromHeadings() {
+      if (!pageContent || !tocContainer) return;
+      const search = ['H2', 'H3', 'H4', 'H5', 'H6'];
+      const headerTocTuple = [];
+
+      recurse(
+        {
+          elem: pageContent,
+          tocContainer,
+          search,
+        },
+        headerTocTuple
+      );
+
+      highlightOnScrollClosure(headerTocTuple);
+    }
+
+    function recurse({ elem, tocContainer, search }, headerTocTuple) {
+      for (const child of elem.children) {
+        if (search.some(x => x === child.tagName)) {
+          child.id = getRandom();
+          const el = createEl({ id: child.id, title: child.innerText });
+          headerTocTuple.push({ header: child, tocLink: el });
+          tocContainer.appendChild(el);
+        }
+        recurse({ elem: child, tocContainer, search }, headerTocTuple);
+      }
+    }
+
+    function highlightOnScrollClosure(headerTocTuple) {
+      const func = headerTocTuple => {
+        for (const [idx, item] of headerTocTuple.entries()) {
+          let isFirst = true;
+          var observer = new IntersectionObserver(function (entries) {
+            const [entry] = entries;
+            if (isFirst) {
+              isFirst = false;
+            } else {
+              if (!isMouseEvent) {
+                // Enter viewport
+                if (entry.isIntersecting) {
+                  const isScrollUp = entry.boundingClientRect.top < window.innerHeight / 2;
+                  if (isScrollUp) {
+                    highlightActive(item.tocLink);
+                  }
+                }
+                // Leave viewport
+                else {
+                  if (idx !== headerTocTuple.length - 1) {
+                    const nextTuple = headerTocTuple[idx + 1];
+                    const isScrollDown = entry.boundingClientRect.top < window.innerHeight / 2;
+                    if (isScrollDown) {
+                      highlightActive(headerTocTuple[idx + 1].tocLink);
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          observer.observe(item.header);
+        }
+        highlightActive(headerTocTuple[0].tocLink);
+      };
+
+      return func(headerTocTuple);
+    }
+
+    function getRandom() {
+      const array = new Uint32Array(1);
+      return window.crypto.getRandomValues(array)[0];
+    }
+
+    function createEl({ id, title }) {
+      const div = document.createElement('div');
+
+      div.onclick = () => onClickHandler(id, div);
+      div.innerText = title;
+      div.classList.add('toc-link');
+      return div;
+    }
+    let isMouseEvent = false;
+    function onClickHandler(id, div) {
+      isMouseEvent = true;
+      const el = document.getElementById(id);
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
+      highlightActive(div);
+      setTimeout(() => (isMouseEvent = false), 500);
+    }
+
+    function highlightActive(el) {
+      for (let l of tocContainer.children) {
+        l.classList.remove('active');
+      }
+
+      el.classList.add('active');
+    }
+  </script>
+
+<script defer="" sk="">
+    const s = document.createElement('script');
+    s.src = '/assets/clipboard.min.js';
+    s.addEventListener('load', () => registerCopyToClipboard());
+    s.addEventListener('error', () => console.warn('could not load "/assets/clipboard.min.js", make sure you have it copied into your assets folder' ));
+    document.body.appendChild(s)
+
+    function registerCopyToClipboard() {
+      const clip = new ClipboardJS('pre .copyToClipboard', {
+        target: function (trigger) {
+          return trigger.nextElementSibling;
+        },
+      });
+
+      clip.on('success', function (event) {
+        event.trigger.textContent = 'Copied!';
+        event.clearSelection();
+        setTimeout(function () {
+          event.trigger.textContent = 'Copy';
+        }, 2000);
+      });
+    }
+  </script><style>
+      .copyToClipboard {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 5px;
+        color: rgb(27, 172, 78);
+        border-radius: 4px;
+        margin: 5px;
+        border: 1px solid rgb(27, 172, 78);
+      }
+
+      .copyToClipboard:hover {
+        background-color: rgb(27, 172, 78);
+        color: white;
+        border: 1px solid rgb(27, 172, 78);
+      }
+  </style></body></html>
