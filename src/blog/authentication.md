@@ -33,15 +33,14 @@ claim-based or permission based approach. Depending on access management require
 one of the previous options is the way to go. No matter which choice, typically the roles, claims
 or permissions are created in the `IDP`, and assigned to users within the `IDP`'s
 user store.
-When the `IDP` authenticates a user, before provisioning the access token, it attaches
-the user permissions to the token. In our frontend client and backend server we can retrieve these
-values and grant the proper acces for the user.
+When the `IDP` authenticates a user, before provisioning the `id token` and `access token`, it attaches
+the user permissions to the tokens. In our frontend client and backend server we can retrieve these
+values and grant the proper access for the user.
 
 ### Cons of storing user access in IDP
 
-The issue with this approach is that user access is typically part of the business logic, and should
-ideally be part of the application, not the IDP. Another drawback is the size of the access token,
-as the permissions grow, so does the access token size. What is in the access token is also visible to
+The issue with this approach is that user access can typically be part of the business logic, in which case, it should be part of the application, not the IDP. Another drawback is the size of the tokens,
+as the permissions grow, so does the token size. What is in the access token is also visible to
 every client, therefore we don't want to store any sensitive information there, which gets prevented by this
 approach. In `B2B` scenarios, the clients would have to implement our user access roles, or we would need to create
 customer specific mapping in our application, which can become unscalable.
@@ -89,11 +88,7 @@ The user access information was previously available in the access token. In thi
 create our own logic for retrieving the access information. Since we still have the user identifiers in the
 access token, we can extract this in the backend middleware, retrieve the rest of the user data from the
 database, and use that for access management, instead of using the access token. In a frontend application
-we also require the user access information, for example hiding certain content for specific users. Since the
-frontend application gets back an access token from the `IDP`, following successful authentication,
-it should have the user access information. In this implementation, we need to make a backend call after recieving
-the access token, and ask the backend for the rest of the information, and only then tell the frontend that the
-authentication was successful, with all the neccessary user information. This can be implemented in the frontend
+we also require the user access information, for example hiding certain content for specific users. In this implementation, we need to make a backend call after recieving the id token from the IDP, and ask the backend for the rest of the information, and only then tell the frontend that the authentication was successful, with all the neccessary user information. This can be implemented in the frontend
 authentication library of our choice.
 
 ## Considerations with this implementation
